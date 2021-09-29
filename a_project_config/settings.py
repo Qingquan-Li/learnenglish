@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'words_in_sentences.apps.WordsInSentencesConfig',
 ]
 
 MIDDLEWARE = [
