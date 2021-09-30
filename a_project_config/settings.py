@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts.apps.AccountsConfig',
     'words_in_sentences.apps.WordsInSentencesConfig',
 ]
 
@@ -132,3 +133,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# #################### Newly expanded content ####################
+
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
