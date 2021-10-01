@@ -4,4 +4,9 @@ from .models import Tag, Sentence
 
 admin.site.register(Tag)
 
-admin.site.register(Sentence)
+
+class SentenceAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('highlight_word',)}
+
+
+admin.site.register(Sentence, SentenceAdmin)
