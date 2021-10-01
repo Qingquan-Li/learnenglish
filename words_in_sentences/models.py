@@ -41,7 +41,8 @@ class Sentence(CommonInfo):
     created_by = models.ForeignKey(to=CustomUser, on_delete=models.SET_NULL,
                                    to_field='id', blank=True, null=True)
     # publish_at = models.DateTimeField(default=timezone.now)
-    # If you are in New York, the admin interface will remind you:
+    # Assuming you are in New York, and you use the defalt `TIME_ZONE = 'UTC'`, the admin page
+    # will remind you as shown below until you configure `TIME_ZONE = 'America/New_York'`:
     # Note: You are 4 hours behind server time.
     publish_date = models.DateField(default=date.today)
     is_understand = models.BooleanField(default=False)
