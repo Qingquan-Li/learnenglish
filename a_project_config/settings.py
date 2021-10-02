@@ -31,9 +31,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'jakeli.pythonanywhere.com']
 
 
 # Application definition
@@ -83,11 +85,24 @@ WSGI_APPLICATION = 'a_project_config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# https://docs.djangoproject.com/en/3.2/ref/databases/#mysql-db-api-drivers
+# $ pip install mysqlclient
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'jakeli$default',
+        'USER': 'jakeli',
+        'PASSWORD': os.getenv('PRODUCTION_MYSQL_PASSWORD'),
+        'HOST': os.getenv('PRODUCTION_MYSQL_HOST'),
+        # 'PORT': '3306',
+    },
 }
 
 
