@@ -14,10 +14,9 @@ class CommonInfo(models.Model):
     class Meta:
         abstract = True
 
+    # docs.djangoproject.com/en/3.2/topics/db/models/#overriding-model-methods
     def save(self, *args, **kwargs):
-        # docs.djangoproject.com/en/3.2/topics/db/models/#overriding-model-methods
         self.version = self.version + 1
-        # super(SubscribeMsg, self).save(*args, **kwargs)
         super().save(*args, **kwargs)  # Call the "real" save() method.
 
 
