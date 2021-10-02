@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'a_project_config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jakeli$default',
+        'NAME': 'jakeli$learnenglish',
         'USER': 'jakeli',
         'PASSWORD': os.getenv('PRODUCTION_MYSQL_PASSWORD'),
         'HOST': os.getenv('PRODUCTION_MYSQL_HOST'),
