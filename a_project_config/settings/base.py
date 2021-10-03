@@ -19,7 +19,9 @@ from dotenv import load_dotenv
 load_dotenv()  # take environment variables from .env.
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
+# a_project_config.settings --> a_project_config.settings.base
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,8 +33,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['127.0.0.1', 'jakeli.pythonanywhere.com']
@@ -155,3 +157,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+# During development, if you use django.contrib.staticfiles,
+# this will be done automatically by runserver when DEBUG is set to True
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
