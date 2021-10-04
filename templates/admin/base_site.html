@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+
+{% comment %}
+    Overriding: venv/lib/python3.9/site-packages/django/contrib/admin/templates/admin/base_site.html
+    Reference:
+    https://docs.djangoproject.com/en/3.2/howto/overriding-templates/#extending-an-overridden-template
+    https://docs.djangoproject.com/en/3.2/ref/contrib/admin/#admin-overriding-templates
+    All Django default admin templates which in `[django source folder]/contrib/admin/templates`
+    can be overridding.
+    Find the path of Django source code:
+    $ python -c "import django; print(django.__path__)"
+
+    Then, change settings.TEMPLATES:
+    'DIRS': [] --> 'DIRS': [os.path.join(BASE_DIR, 'templates')]
+    Reference:
+    https://docs.djangoproject.com/zh-hans/3.2/intro/tutorial03/#write-views-that-actually-do-something
+{% endcomment %}
+
+{% comment %} {% load static %} {% endcomment %}
+{% block extrahead %}
+    {% comment %} <link rel="icon" href="{% static 'images/favicon.ico' %}"> {% endcomment %}
+    <link rel="icon" href="/favicon.ico">
+{% endblock %}
+
+{% block title %}{{ title }} | LearnEnglish {% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">LearnEnglish</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
