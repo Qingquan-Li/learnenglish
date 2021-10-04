@@ -15,5 +15,11 @@ class SentenceAdmin(admin.ModelAdmin):
     #     obj.created_by = request.user
     #     super().save_model(request, obj, form, change)
 
+    list_display = ('english_sentence', 'highlight_word',)
+
+    list_filter = ('tags', 'publish_date',)
+
+    search_fields = ('english_sentence', 'highlight_word', 'chinese_translation',)
+
 
 admin.site.register(Sentence, SentenceAdmin)
