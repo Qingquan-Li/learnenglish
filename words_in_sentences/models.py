@@ -26,6 +26,9 @@ class Tag(models.Model):
     name = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Sentence(CommonInfo):
     # docs.djangoproject.com/en/3.2/topics/db/models/#automatic-primary-key-fields
