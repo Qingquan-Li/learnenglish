@@ -42,3 +42,15 @@ Ran 2 tests in 0.085s
 OK
 Destroying test database for alias 'default'...
 """
+
+"""
+$ python manage.py test accounts.tests --settings=a_project_config.settings.local
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.102s
+
+OK
+Destroying test database for alias 'default'...
+"""

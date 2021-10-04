@@ -68,7 +68,9 @@ ROOT_URLCONF = 'a_project_config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 'DIRS': [],
+        # docs.djangoproject.com/zh-hans/3.2/intro/tutorial03/#write-views-that-actually-do-something
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -96,6 +98,7 @@ WSGI_APPLICATION = 'a_project_config.wsgi.application'
 
 # https://docs.djangoproject.com/en/3.2/ref/databases/#mysql-db-api-drivers
 # $ pip install mysqlclient
+# https://help.pythonanywhere.com/pages/UsingMySQL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
