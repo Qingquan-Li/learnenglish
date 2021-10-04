@@ -16,10 +16,9 @@
     https://docs.djangoproject.com/zh-hans/3.2/intro/tutorial03/#write-views-that-actually-do-something
 {% endcomment %}
 
-{% comment %} {% load static %} {% endcomment %}
+{% load static %}
 {% block extrahead %}
-    {% comment %} <link rel="icon" href="{% static 'images/favicon.ico' %}"> {% endcomment %}
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
 {% endblock %}
 
 {% block title %}{{ title }} | LearnEnglish {% endblock %}
