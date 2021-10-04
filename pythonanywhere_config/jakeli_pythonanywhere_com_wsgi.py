@@ -64,13 +64,13 @@
 # If you have a WSGI file that you want to serve using PythonAnywhere, perhaps
 # in your home directory under version control, then use something like this:
 #
-#import sys
+# import sys
 #
-#path = '/home/jakeli/path/to/my/app
-#if path not in sys.path:
+# path = '/home/jakeli/path/to/my/app
+# if path not in sys.path:
 #    sys.path.append(path)
 #
-#from my_wsgi_file import application  # noqa
+# from my_wsgi_file import application  # noqa
 
 
 # +++++++++++ DJANGO +++++++++++
@@ -118,19 +118,19 @@ application = get_wsgi_application()
 # may need to rename it during the import:
 #
 #
-#import sys
+# import sys
 #
-## The "/home/jakeli" below specifies your home
-## directory -- the rest should be the directory you uploaded your Flask
-## code to underneath the home directory.  So if you just ran
-## "git clone git@github.com/myusername/myproject.git"
-## ...or uploaded files to the directory "myproject", then you should
-## specify "/home/jakeli/myproject"
-#path = '/home/jakeli/path/to/flask_app_directory'
-#if path not in sys.path:
+# # The "/home/jakeli" below specifies your home
+# # directory -- the rest should be the directory you uploaded your Flask
+# # code to underneath the home directory.  So if you just ran
+# # "git clone git@github.com/myusername/myproject.git"
+# # ...or uploaded files to the directory "myproject", then you should
+# # specify "/home/jakeli/myproject"
+# path = '/home/jakeli/path/to/flask_app_directory'
+# if path not in sys.path:
 #    sys.path.append(path)
 #
-#from main_flask_app_file import app as application  # noqa
+# from main_flask_app_file import app as application  # noqa
 #
 # NB -- many Flask guides suggest you use a file called run.py; that's
 # not necessary on PythonAnywhere.  And you should make sure your code
