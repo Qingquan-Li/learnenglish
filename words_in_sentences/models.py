@@ -23,7 +23,7 @@ class CommonInfo(models.Model):
 class Tag(models.Model):
     # docs.djangoproject.com/en/3.2/topics/db/models/#automatic-primary-key-fields
     # id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):

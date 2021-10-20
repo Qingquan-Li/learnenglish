@@ -1,6 +1,9 @@
 # Runserver:
 # $ python manage.py runserver 0:8000 --settings=a_project_config.settings.local
 
+# Creating new migrations based on models:
+# python manage.py makemigrations [app_name] --settings=a_project_config.settings.local
+
 # Applying migrations to database:
 # $ python manage.py migrate --settings=a_project_config.settings.local
 
