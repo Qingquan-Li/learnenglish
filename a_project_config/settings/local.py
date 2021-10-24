@@ -13,6 +13,9 @@
 # Creating an admin user:
 # python manage.py createsuperuser --settings=a_project_config.settings.local
 
+# Running tests:
+# python manage.py test --settings=a_project_config.settings.local
+
 import os
 
 from .base import *  # noqa

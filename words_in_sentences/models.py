@@ -1,6 +1,8 @@
 from datetime import date
 
 from django.db import models
+from django.urls import reverse
+
 # from django.contrib.auth.models import User
 from accounts.models import CustomUser
 
@@ -48,6 +50,10 @@ class Sentence(CommonInfo):
     # Note: You are 4 hours behind server time.
     publish_date = models.DateField(default=date.today)
     is_understand = models.BooleanField(default=False)
+
+    # docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url
+    def get_absolute_url(self):
+        return reverse('api_v1_words_in_sentences:sentence-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.english_sentence
