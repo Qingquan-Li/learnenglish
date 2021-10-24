@@ -32,24 +32,12 @@ class CustomUserTests(TestCase):
 
 
 """
-$ python manage.py test accounts.tests  # Use SQLite Database
+$ python manage.py test accounts.tests.test_models --settings=a_project_config.settings.local
 Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
 ..
 ----------------------------------------------------------------------
-Ran 2 tests in 0.085s
-
-OK
-Destroying test database for alias 'default'...
-"""
-
-"""
-$ python manage.py test accounts.tests --settings=a_project_config.settings.local
-Creating test database for alias 'default'...
-System check identified no issues (0 silenced).
-..
-----------------------------------------------------------------------
-Ran 2 tests in 0.102s
+Ran 2 tests in 0.097s
 
 OK
 Destroying test database for alias 'default'...
