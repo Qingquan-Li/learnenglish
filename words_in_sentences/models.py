@@ -28,6 +28,10 @@ class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
     is_active = models.BooleanField(default=True)
 
+    # docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url
+    def get_absolute_url(self):
+        return reverse('api_v1_words_in_sentences:tag-detail', kwargs={'pk': self.pk})
+
     def __str__(self):
         return self.name
 

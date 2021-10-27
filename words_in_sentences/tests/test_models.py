@@ -1,9 +1,10 @@
 from django.test import TestCase
 
 from words_in_sentences.models import Sentence
+from words_in_sentences.models import Tag
 
 
-class SentenceTest(TestCase):
+class SentenceModelTest(TestCase):
 
     @classmethod
     def setUpTestData(cls) -> None:
@@ -64,13 +65,39 @@ class SentenceTest(TestCase):
             sentence.get_absolute_url(), '/api/v1/words-in-sentences/sentences/1/')
 
 
+class TagModelTest(TestCase):
+
+    @classmethod
+    def setUpTestData(cls) -> None:
+        Tag.objects.create(
+            # id,
+            name='first tag',
+            is_active=0,  # or is_active='0',
+        )
+
+    def test_name_content(self) -> None:
+        tag = Tag.objects.get(id=1)
+        expected_object_name = f'{tag.name}'
+        self.assertEqual(expected_object_name, 'first tag')
+
+    def test_is_active(self) -> None:
+        tag = Tag.objects.get(id=1)
+        self.assertFalse(tag.is_active)
+
+    def test_get_absolute_url(self):
+        tag = Tag.objects.get(id=1)
+        # This will also fail if the urlconf is not defined.
+        self.assertEqual(
+            tag.get_absolute_url(), '/api/v1/words-in-sentences/tags/1/')
+
+
 """
 $ python manage.py test words_in_sentences.tests.test_models --settings=a_project_config.settings.local
 Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
-.......
+..........
 ----------------------------------------------------------------------
-Ran 7 tests in 0.011s
+Ran 10 tests in 0.016s
 
 OK
 Destroying test database for alias 'default'...
