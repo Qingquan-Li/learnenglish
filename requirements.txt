@@ -2,6 +2,7 @@ asgiref==3.4.1
 Django==3.2.7
 django-cors-headers==3.10.0
 djangorestframework==3.12.4
+docutils==0.18
 flake8==3.9.2
 mccabe==0.6.1
 mysqlclient==2.0.3
