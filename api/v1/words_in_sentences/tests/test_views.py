@@ -23,7 +23,12 @@ class SentenceViewTests(APITestCase):
         url = reverse('api_v1_words_in_sentences:sentence-list')
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data[0]['english_sentence'], 'First english sentence')
+        # self.assertEqual(response.data[0]['english_sentence'], 'First english sentence')
+        # with pagination:
+        self.assertEqual(
+            response.data['results'][0]['english_sentence'],
+            'First english sentence'
+        )
 
     def test_create_sentence(self):
         """ Create (post) a new sentence object. """
@@ -147,7 +152,12 @@ class TagViewTests(APITestCase):
         url = reverse('api_v1_words_in_sentences:tag-list')
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data[0]['name'], 'First tag')
+        # self.assertEqual(response.data[0]['name'], 'First tag')
+        # with pagination:
+        self.assertEqual(
+            response.data['results'][0]['name'],
+            'First tag'
+        )
 
     def test_create_tag(self):
         """ Create (post) a new tag object. """
@@ -264,7 +274,7 @@ Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
 .................
 ----------------------------------------------------------------------
-Ran 17 tests in 0.738s
+Ran 17 tests in 0.734s
 
 OK
 Destroying test database for alias 'default'...

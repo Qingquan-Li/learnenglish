@@ -8,12 +8,12 @@ class TagSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tag
-        # fields = "__all__"
-        fields = (
-            # 'id',
-            'name',
-            # 'is_active',
-        )
+        # fields = (
+        #     # 'id',
+        #     'name',
+        #     'is_active',
+        # )
+        fields = "__all__"
 
 
 class SentenceListSerializer(serializers.ModelSerializer):
@@ -25,7 +25,7 @@ class SentenceListSerializer(serializers.ModelSerializer):
             'created_at',
             # 'modified_at',
             # 'version',
-            # 'is_active',
+            'is_active',
             'english_sentence',
             'highlight_word',
             # 'slug',

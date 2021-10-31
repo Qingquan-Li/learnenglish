@@ -28,6 +28,9 @@ class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
     is_active = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ['-id']
+
     # docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url
     def get_absolute_url(self):
         return reverse('api_v1_words_in_sentences:tag-detail', kwargs={'pk': self.pk})
@@ -54,6 +57,9 @@ class Sentence(CommonInfo):
     # Note: You are 4 hours behind server time.
     publish_date = models.DateField(default=date.today)
     is_understand = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-id']
 
     # docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url
     def get_absolute_url(self):

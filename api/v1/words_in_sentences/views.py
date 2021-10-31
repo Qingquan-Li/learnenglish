@@ -8,6 +8,7 @@ from words_in_sentences.models import Tag
 from .serializers import SentenceListSerializer, SentenceDetailSerializer
 from .serializers import TagSerializer
 from .utils.permissions import IsSentenceCreatorOrReadOnly
+from .utils.pagination import CustomSentencePagination, CustomTagPagination
 
 
 # https://www.django-rest-framework.org/api-guide/generic-views/
@@ -15,6 +16,7 @@ class SentenceList(generics.ListCreateAPIView):
     queryset = Sentence.objects.all()
     serializer_class = SentenceListSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    pagination_class = CustomSentencePagination
 
     # override the create function by changing the response structure
     def create(self, request, *args, **kwargs):
@@ -65,6 +67,7 @@ class TagList(generics.ListCreateAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    pagination_class = CustomTagPagination
 
 
 class TagDetail(generics.RetrieveUpdateDestroyAPIView):
