@@ -151,5 +151,14 @@ $ python manage.py migrate --settings=a_project_config.settings.production
 $ python manage.py test --settings=a_project_config.settings.production
 ```
 
+Note: Cannot run the test code that depends on the database
+since we use MySQL provided by PythonAnywhere:
+
+```bash
+$ python manage.py test --settings=a_project_config.settings.production
+Creating test database for alias 'default'...
+Got an error creating the test database: (1044, "Access denied for user 'jakeli'@'%' to database 'test_jakeli$learnenglish'")
+```
+
 ## 6. Reloading the web app on PythonAnywhere
 Click the `Reload` button on PythonAnywhere

@@ -10,5 +10,5 @@ One of the effective ways to learn English is to learn words through sentences.
 - [x] Server: This website is deployed on [PythonAnywhere](https://www.pythonanywhere.com/).
 - [x] Database: MySQL
 - [x] Backend framework: Django
-- [x] Frameworks to Build API: Django REST framework
+- [x] API framework: Django REST framework
 - [ ] Front-end framework: React/Vue.js
