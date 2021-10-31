@@ -18,7 +18,7 @@
 
 import os
 
-from .base import *  # noqa
+from .production import *  # noqa
 
 # DEBUG = False  # Unable to load static files automatically
 DEBUG = True
@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['*']
 # Local MySQL:
 # https://docs.djangoproject.com/en/3.2/ref/databases/#mysql-db-api-drivers
 # $ pip install mysqlclient
+# TODO
 # mysqlclient with mysql-8.0.26-macos11-arm64: NameError: name '_mysql' is not defined
 # stackoverflow.com/questions/63109987/nameerror-name-mysql-is-not-defined-after-setting-change-to-mysql
 import pymysql  # noqa
