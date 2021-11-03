@@ -7,8 +7,16 @@ One of the effective ways to learn English is to learn words through sentences.
 
 ## Website solution
 
-- [x] Server: This website is deployed on [PythonAnywhere](https://www.pythonanywhere.com/).
-- [x] Database: MySQL
-- [x] Backend framework: Django
-- [x] API framework: Django REST framework
-- [ ] Front-end framework: React/Vue.js
+- Server system:
+    - [x] Linux (Ubuntu 20.04)
+- Database:
+    - [ ] PostgreSQL
+- Backend:
+    - [x] Web framework: Django
+    - [x] API framework: Django REST framework
+    - [ ] WSGI server: Gunicorn
+    - [ ] Reverse proxy: Nginx
+- Front-end:
+    - [ ] React
+- Tools:
+    - [ ] Docker
