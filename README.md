@@ -11,4 +11,3 @@ One of the effective ways to learn English is to learn words through sentences.
 - [x] Database: MySQL
 - [x] Backend framework: Django
 - [x] API framework: Django REST framework
-- [ ] Front-end framework: React/Vue.js
