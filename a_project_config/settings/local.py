@@ -1,20 +1,23 @@
-# Runserver:
-# $ python manage.py runserver 0:8000 --settings=a_project_config.settings.local
+"""
+Runserver:
+$ python manage.py runserver 0:8000 --settings=a_project_config.settings.local
 
-# Creating new migrations based on models:
-# python manage.py makemigrations [app_name] --settings=a_project_config.settings.local
+Creating an admin user:
+$ python manage.py createsuperuser --settings=a_project_config.settings.local
 
-# Applying migrations to database:
-# $ python manage.py migrate --settings=a_project_config.settings.local
+Creating new migrations based on models:
+$ python manage.py makemigrations [app_name] --settings=a_project_config.settings.local
 
-# Running the collectstatic management command:
-# $ python manage.py collectstatic --settings=a_project_config.settings.local
+Applying migrations to database:
+$ python manage.py migrate --settings=a_project_config.settings.local
 
-# Creating an admin user:
-# python manage.py createsuperuser --settings=a_project_config.settings.local
+Running the collectstatic management command:
+$ python manage.py collectstatic --settings=a_project_config.settings.local
 
-# Running tests:
-# python manage.py test --settings=a_project_config.settings.local
+Running tests:
+$ python manage.py test --settings=a_project_config.settings.local
+"""
+
 
 import os
 
@@ -33,21 +36,14 @@ ALLOWED_HOSTS = ['*']
 #     }
 # }
 
-# Local MySQL:
-# https://docs.djangoproject.com/en/3.2/ref/databases/#mysql-db-api-drivers
-# $ pip install mysqlclient
-# TODO
-# mysqlclient with mysql-8.0.26-macos11-arm64: NameError: name '_mysql' is not defined
-# stackoverflow.com/questions/63109987/nameerror-name-mysql-is-not-defined-after-setting-change-to-mysql
-import pymysql  # noqa
-pymysql.install_as_MySQLdb()
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'learnenglish',
-        'USER': 'root',
-        'PASSWORD': os.getenv('LOCAL_MYSQL_PASSWORD'),
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'USER': 'learnenglish',  # Or: postgres
+        'PASSWORD': os.getenv('LOCAL_POSTGRESQL_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
