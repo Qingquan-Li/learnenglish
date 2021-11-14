@@ -58,6 +58,17 @@ $ git commit -m "descriptive message"
 $ git push
 ```
 
+## 7. Transferring environment variables (`.env`) to server
+> References:
+> https://saurabh-kumar.com/python-dotenv/
+
+```bash
+$ cd project_directory # Local
+$ sftp username@server_ip
+$ cd project_directory # Server
+$ put .env # Transferring Local Files to the Remote System
+```
+
 <br>
 
 ---
