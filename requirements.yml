@@ -42,4 +42,4 @@ dependencies:
   - yapf=0.31.0
   - zipp=3.6.0
   - zlib=1.2.11
-prefix: /Users/quan/opt/miniconda3/envs/learnenglish
+prefix: /home/jake/miniconda3/envs/learnenglish

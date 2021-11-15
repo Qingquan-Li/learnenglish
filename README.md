@@ -10,7 +10,7 @@ One of the effective ways to learn English is to learn words through sentences.
 - Server system:
     - [x] Linux (Ubuntu 20.04)
 - Database:
-    - [ ] PostgreSQL
+    - [x] PostgreSQL
 - Backend:
     - [x] Web framework: Django
     - [x] API framework: Django REST framework

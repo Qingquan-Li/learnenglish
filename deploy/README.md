@@ -40,7 +40,7 @@ If you hava added new package dependencies, you should run the command
 to record an environment's current package list into requirements-local.yml:
 
 ```bash
-$ conda env export --no-builds --file environment_local.yml
+$ conda env export --no-builds --file requirements-local.yml
 ```
 
 ## 5. Running the test code
