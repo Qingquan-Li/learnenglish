@@ -1,4 +1,3 @@
-name: learnenglish
 channels:
   - conda-forge
   - defaults
