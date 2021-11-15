@@ -1,4 +1,4 @@
-name: learnenglish
+name: en
 channels:
   - conda-forge
   - defaults
@@ -12,7 +12,7 @@ dependencies:
   - docutils=0.18
   - flake8=4.0.1
   - gunicorn=20.1.0
-  - importlib-metadata=3.10.1
+  - importlib-metadata=4.2.0
   - krb5=1.19.2
   - libcxx=12.0.1
   - libedit=3.1.20191231
@@ -23,12 +23,13 @@ dependencies:
   - ncurses=6.2
   - openssl=1.1.1l
   - pip=21.3.1
-  - psycopg2=2.9.1
+  - psycopg2=2.9.2
+  - psycopg2-binary=2.9.2
   - pycodestyle=2.8.0
   - pyflakes=2.4.0
-  - python=3.9.7
-  - python-dotenv=0.19.1
-  - python_abi=3.9
+  - python=3.8.12
+  - python-dotenv=0.19.2
+  - python_abi=3.8
   - pytz=2021.3
   - readline=8.1
   - setuptools=58.5.3
@@ -36,10 +37,8 @@ dependencies:
   - sqlparse=0.4.2
   - tk=8.6.11
   - typing_extensions=3.10.0.2
-  - tzdata=2021e
   - wheel=0.37.0
   - xz=5.2.5
-  - yapf=0.31.0
   - zipp=3.6.0
   - zlib=1.2.11
-prefix: /home/jake/miniconda3/envs/learnenglish
+prefix: /Users/quan/opt/miniconda3/envs/en
