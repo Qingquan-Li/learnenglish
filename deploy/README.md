@@ -37,10 +37,10 @@ $ python manage.py migrate --settings=a_project_config.settings.local
 ## 4. Managing package dependencies
 
 If you hava added new package dependencies, you should run the command
-to record an environment's current package list into requirements-local.yml:
+to record an environment's current package list into requirements.txt:
 
 ```bash
-$ conda env export --no-builds --file requirements-local.yml
+$ pip freeze > requirements.txt
 ```
 
 ## 5. Running the test code
@@ -79,7 +79,7 @@ $ put .env # Transferring Local Files to the Remote System
 
 ## 1. Entering the project path and activating the virtual environment
 ```bash
-$ cd ~/learnenglish && conda activate learnenglish
+$ cd ~/learnenglish && source venv/bin/activate
 ```
 
 ## 2. Pulling new code from GitHub
@@ -96,7 +96,7 @@ If you hava added new package dependencies,
 you should run the command to intall them:
 
 ```bash
-$ conda env create --file requirements.yml
+$ pip install -r requirements.txt
 ```
 
 ## 4. Applying migrations to database:
