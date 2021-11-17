@@ -110,5 +110,7 @@ $ python manage.py migrate --settings=a_project_config.settings.production
 
 ## 5. Running the test code
 ```bash
-$ python manage.py test --settings=a_project_config.settings.production
+jake@ubuntu:~$ sudo -i -u learnenglish # System user (PostgreSQL Superuser) with the same name as the database
+learnenglish@ubuntu:~$ cd /home/jake/learnenglish && source .venv/bin/activate
+(.venv) learnenglish@ubuntu:/home/jake/learnenglish$ python manage.py test --settings=a_project_config.settings.production
 ```
