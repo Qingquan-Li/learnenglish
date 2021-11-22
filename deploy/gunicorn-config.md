@@ -85,15 +85,15 @@ Check the status of the process to find out whether it was able to start:
 ```bash
 $ sudo systemctl status gunicorn.socket
 ● gunicorn.socket - gunicorn socket
-     Loaded: loaded (/etc/systemd/system/gunicorn.socket; enabled; vendor preset: e>
-     Active: active (listening) since Sat 2021-11-20 23:00:34 EST; 4min 36s ago
+     Loaded: loaded (/etc/systemd/system/gunicorn.socket; enabled; vendor preset: enabled)
+     Active: active (listening) since Mon 2021-11-22 02:42:02 UTC; 57s ago
    Triggers: ● gunicorn.service
      Listen: /run/gunicorn.sock (Stream)
-      Tasks: 0 (limit: 2245)
+      Tasks: 0 (limit: 1136)
      Memory: 0B
      CGroup: /system.slice/gunicorn.socket
 
-Nov 20 23:00:34 vm-ubuntu systemd[1]: Listening on gunicorn socket.
+Nov 22 02:42:02 ubuntu systemd[1]: Listening on gunicorn socket.
 ```
 
 Next, check for the existence of the gunicorn.sock file within the /run directory:
@@ -105,8 +105,8 @@ $ file /run/gunicorn.sock
 If something goes wrong, Check the Gunicorn socket’s logs by typing:
 ```bash
 $ sudo journalctl -u gunicorn.socket
--- Logs begin at Tue 2021-11-16 15:55:20 EST, end at Sat 2021-11-20 23:15:35 EST. --
-Nov 20 23:00:34 vm-ubuntu systemd[1]: Listening on gunicorn socket.
+-- Logs begin at Tue 2021-11-02 02:21:52 UTC, end at Mon 2021-11-22 02:44:44 UTC. --
+Nov 22 02:42:02 ubuntu systemd[1]: Listening on gunicorn socket.
 ```
 
 # 4. Testing Socket Activation
@@ -115,7 +115,7 @@ Currently, if you’ve only started the gunicorn.socket unit, the gunicorn.servi
 ```bash
 $ sudo systemctl status gunicorn
 ● gunicorn.service - gunicorn daemon
-     Loaded: loaded (/etc/systemd/system/gunicorn.service; disabled; vendor preset:>
+     Loaded: loaded (/etc/systemd/system/gunicorn.service; disabled; vendor preset: enabled)
      Active: inactive (dead)
 TriggeredBy: ● gunicorn.socket
 ```
@@ -130,27 +130,26 @@ You should receive the HTML output from your application in the terminal. This i
 ```bash
 $ sudo systemctl status gunicorn
 ● gunicorn.service - gunicorn daemon
-     Loaded: loaded (/etc/systemd/system/gunicorn.service; disabled; vendor preset:>
-     Active: active (running) since Sat 2021-11-20 23:19:38 EST; 3min 52s ago
+     Loaded: loaded (/etc/systemd/system/gunicorn.service; disabled; vendor preset: enabled)
+     Active: active (running) since Mon 2021-11-22 02:47:10 UTC; 53s ago
 TriggeredBy: ● gunicorn.socket
-   Main PID: 64050 (gunicorn)
-      Tasks: 4 (limit: 2245)
-     Memory: 101.2M
+   Main PID: 231768 (gunicorn)
+      Tasks: 4 (limit: 1136)
+     Memory: 102.7M
      CGroup: /system.slice/gunicorn.service
-             ├─64050 /home/jake/learnenglish/.venv/bin/python3 /home/jake/learnengl>
-             ├─64052 /home/jake/learnenglish/.venv/bin/python3 /home/jake/learnengl>
-             ├─64053 /home/jake/learnenglish/.venv/bin/python3 /home/jake/learnengl>
-             └─64054 /home/jake/learnenglish/.venv/bin/python3 /home/jake/learnengl>
+             ├─231768 /home/jake/learnenglish/.venv/bin/python3 /home/jake/learnenglish/.venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock a_project_config.sock a_project_config.wsgi:application
+             ├─231780 /home/jake/learnenglish/.venv/bin/python3 /home/jake/learnenglish/.venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock a_project_config.sock a_project_config.wsgi:application
+             ├─231781 /home/jake/learnenglish/.venv/bin/python3 /home/jake/learnenglish/.venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock a_project_config.sock a_project_config.wsgi:application
+             └─231782 /home/jake/learnenglish/.venv/bin/python3 /home/jake/learnenglish/.venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock a_project_config.sock a_project_config.wsgi:application
 
-Nov 20 23:19:38 vm-ubuntu systemd[1]: Started gunicorn daemon.
-Nov 20 23:19:38 vm-ubuntu gunicorn[64050]: [2021-11-20 23:19:38 -0500] [64050] [INF>
-Nov 20 23:19:38 vm-ubuntu gunicorn[64050]: [2021-11-20 23:19:38 -0500] [64050] [INF>
-Nov 20 23:19:38 vm-ubuntu gunicorn[64050]: [2021-11-20 23:19:38 -0500] [64050] [INF>
-Nov 20 23:19:38 vm-ubuntu gunicorn[64052]: [2021-11-20 23:19:38 -0500] [64052] [INF>
-Nov 20 23:19:38 vm-ubuntu gunicorn[64053]: [2021-11-20 23:19:38 -0500] [64053] [INF>
-Nov 20 23:19:38 vm-ubuntu gunicorn[64054]: [2021-11-20 23:19:38 -0500] [64054] [INF>
-Nov 20 23:19:38 vm-ubuntu gunicorn[64053]: Not Found: /
-Nov 20 23:19:38 vm-ubuntu gunicorn[64053]:  - - [20/Nov/2021:23:19:38 -0500] "GET />
+Nov 22 02:47:10 ubuntu systemd[1]: Started gunicorn daemon.
+Nov 22 02:47:10 ubuntu gunicorn[231768]: [2021-11-22 02:47:10 +0000] [231768] [INFO] Starting gunicorn 20.1.0
+Nov 22 02:47:10 ubuntu gunicorn[231768]: [2021-11-22 02:47:10 +0000] [231768] [INFO] Listening at: unix:/run/gunicorn.sock (231768)
+Nov 22 02:47:10 ubuntu gunicorn[231768]: [2021-11-22 02:47:10 +0000] [231768] [INFO] Using worker: sync
+Nov 22 02:47:10 ubuntu gunicorn[231780]: [2021-11-22 02:47:10 +0000] [231780] [INFO] Booting worker with pid: 231780
+Nov 22 02:47:10 ubuntu gunicorn[231781]: [2021-11-22 02:47:10 +0000] [231781] [INFO] Booting worker with pid: 231781
+Nov 22 02:47:10 ubuntu gunicorn[231782]: [2021-11-22 02:47:10 +0000] [231782] [INFO] Booting worker with pid: 231782
+Nov 22 02:47:11 ubuntu gunicorn[231780]:  - - [21/Nov/2021:21:47:11 -0500] "GET / HTTP/1.1" 404 179 "-" "curl/7.68.0"
 ```
 
 If you make changes to the `/etc/systemd/system/gunicorn.service` file, reload the daemon to reread the service definition and restart the Gunicorn process by typing:

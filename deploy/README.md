@@ -110,11 +110,11 @@ you should run the command:
 
 ## 5. Running the test code
 ```bash
+(.venv) $ python manage.py test --settings=a_project_config.settings.production
 # If 'permission denied  to create database', run:
 # $ sudo -u postgres psql
 # postgres=# \du  \\ -- to list all users
 # postgres=# ALTER USER your-postgres-user-name WITH SUPERUSER;
-(.venv) $ python manage.py test --settings=a_project_config.settings.production
 ```
 
 ## 6. Restart Gunicorn and Nginx
