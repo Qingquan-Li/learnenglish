@@ -79,7 +79,7 @@ $ put .env # Transferring Local Files to the Remote System
 
 ## 1. Entering the project path and activating the virtual environment
 ```bash
-$ cd ~/learnenglish && source venv/bin/activate
+$ cd ~/learnenglish && source .venv/bin/activate
 ```
 
 ## 2. Pulling new code from GitHub
@@ -96,7 +96,7 @@ If you hava added new package dependencies,
 you should run the command to intall them:
 
 ```bash
-$ pip install -r requirements.txt
+(.venv) $ pip install -r requirements.txt
 ```
 
 ## 4. Applying migrations to database:
@@ -105,12 +105,23 @@ If you have changed the models' fields or added/deleted models,
 you should run the command:
 
 ```bash
-$ python manage.py migrate --settings=a_project_config.settings.production
+(.venv) $ python manage.py migrate --settings=a_project_config.settings.production
 ```
 
 ## 5. Running the test code
 ```bash
-jake@ubuntu:~$ sudo -i -u learnenglish # System user (PostgreSQL Superuser) with the same name as the database
-learnenglish@ubuntu:~$ cd /home/jake/learnenglish && source .venv/bin/activate
-(.venv) learnenglish@ubuntu:/home/jake/learnenglish$ python manage.py test --settings=a_project_config.settings.production
+# If 'permission denied  to create database', run:
+# $ sudo -u postgres psql
+# postgres=# \du  \\ -- to list all users
+# postgres=# ALTER USER your-postgres-user-name WITH SUPERUSER;
+(.venv) $ python manage.py test --settings=a_project_config.settings.production
+```
+
+## 6. Restart Gunicorn and Nginx
+
+> To read more, please check deploy/gunicorn-config.md and deploy/nginx-config.md
+
+```bash
+$ sudo systemctl restart gunicorn
+$ sudo systemctl restart nginx
 ```

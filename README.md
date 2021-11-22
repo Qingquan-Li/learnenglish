@@ -14,8 +14,8 @@ One of the effective ways to learn English is to learn words through sentences.
 - Backend:
     - [x] Web framework: Django
     - [x] API framework: Django REST framework
-    - [ ] WSGI server: Gunicorn
-    - [ ] Reverse proxy: Nginx
+    - [x] WSGI server: Gunicorn
+    - [x] Reverse proxy: Nginx
 - Front-end:
     - [ ] React
 - Tools:

@@ -177,10 +177,10 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
-# https://github.com/adamchainz/django-cors-headers
-CORS_ALLOWED_ORIGINS = [
-    # 3000 is the default port for React
-    'http://localhost:3000',
-    # 8080 is the default port for Vue
-    # 'http://localhost:8080',
-]
+# # https://github.com/adamchainz/django-cors-headers
+# CORS_ALLOWED_ORIGINS = [
+#     # 3000 is the default port for React
+#     'http://localhost:3000',
+#     # 8080 is the default port for Vue
+#     # 'http://localhost:8080',
+# ]
