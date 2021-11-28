@@ -15,7 +15,7 @@ $ sudo apt install certbot python3-certbot-nginx
 
 Certbot provides a variety of ways to obtain SSL certificates through plugins. The Nginx plugin will take care of reconfiguring Nginx and reloading the config whenever necessary. To use this plugin, type the following:
 ```bash
-sudo certbot --nginx -d example.com -d www.example.com
+$ sudo certbot --nginx -d example.com -d www.example.com
 ```
 This runs certbot with the --nginx plugin, using -d to specify the domain names we’d like the certificate to be valid for.
 
@@ -85,6 +85,23 @@ IMPORTANT NOTES:
    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
    Donating to EFF:                    https://eff.org/donate-le
 
+```
+
+Some `443/SSL` statements will be appended to the Nginx configuration file ( `/etc/nginx/sites-available/learnenglish` ):
+
+```
+server {
+    listen 80;
+    server_name en.fatlitalk.com;
+    ...
+
+    # The following statement will be appended:
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/en.fatlitalk.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/en.fatlitalk.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 ```
 
 # 3. Verifying Certbot Auto-Renewal

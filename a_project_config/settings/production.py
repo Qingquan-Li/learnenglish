@@ -37,7 +37,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['en.fatlitalk.com', 'localhost']
+ALLOWED_HOSTS = ['en.fatlitalk.com', 'qingquanli.com', 'localhost']
 
 
 # Application definition
