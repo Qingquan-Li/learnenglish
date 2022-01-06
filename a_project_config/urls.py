@@ -20,7 +20,6 @@ from django.urls import include  # new
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
-    # TODO: Comment React code temporarily
-    # path('api/', include('api.urls')),
-    # path('api-auth/', include('rest_framework.urls')),
+    path('api/', include('api.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 ]
