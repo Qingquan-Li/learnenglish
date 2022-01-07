@@ -37,7 +37,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['en.fatlitalk.com', 'qingquanli.com', 'localhost']
+ALLOWED_HOSTS = ['learnenglish.qingquanli.com', 'localhost', 'en.fatlitalk.com']
 
 
 # Application definition
@@ -176,6 +176,22 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 # this will be done automatically by runserver when DEBUG is set to True
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+# DRF default settings is in:
+# .venv/lib/python3.8/site-packages/rest_framework/settings.py
+# Setting the global throttling policy:
+# https://www.django-rest-framework.org/api-guide/throttling/
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        # anonymous users. The IP address of the request will be used as the unique cache key.
+        'anon': '60/minute',
+        # given user. The user id will be used as a unique cache key if the user is authenticated.
+        'user': '600/minute',
+    },
+}
 
 # # https://github.com/adamchainz/django-cors-headers
 # CORS_ALLOWED_ORIGINS = [

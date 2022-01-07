@@ -5,10 +5,14 @@
 # pycharm:
 .idea/
 
-# For Django
+# For Django:
 # References: github.com/github/gitignore/blob/master/Python.gitignore
 .env
 .venv/
 __pycache__/
 *.py[cod]
 db.sqlite3
+
+# For reactjs(frontend):
+# TODO: Comment React code temporarily
+/frontend

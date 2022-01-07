@@ -1,3 +1,16 @@
+You can also use Cloudflare's Flexible SSL, which is free and easy:
+https://www.cloudflare.com/ssl/
+
+> Cloudflare allows any Internet property to become HTTPS-enabled with the click of a button. You’ll never need to worry about SSL certificates expiring or staying up to date with the latest SSL vulnerabilities when you’re using Cloudflare SSL.
+>
+> [Flexible SSL](https://www.cloudflare.com/ssl/) encrypts traffic from Cloudflare to end users of your website, but not from Cloudflare to your origin server. This is the easiest way to enable HTTPS because it doesn’t require installing an SSL certificate on your origin.
+
+<br>
+
+---
+
+<br>
+
 > References:
 > https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04
 
