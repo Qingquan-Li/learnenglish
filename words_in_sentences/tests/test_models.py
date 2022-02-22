@@ -55,9 +55,9 @@ class SentenceModelTest(TestCase):
     def test_get_absolute_url(self) -> None:
         # This will also fail if the urlconf is not defined.
         self.assertEqual(
-            # self.sentence.get_absolute_url(), '/api/v1/words-in-sentences/sentences/1/'
             self.sentence.get_absolute_url(),
-            '/api/v1/words-in-sentences/sentences/{id}/'.format(id=self.sentence.pk)
+            # '/api/v1/words-in-sentences/sentences/{id}/'.format(id=self.sentence.pk)
+            '/words-in-sentences/{id}/'.format(id=self.sentence.pk)
         )
 
 

@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     # Local
     'accounts.apps.AccountsConfig',
     'words_in_sentences.apps.WordsInSentencesConfig',
+    'homepage.apps.HomepageConfig',
 ]
 
 MIDDLEWARE = [
