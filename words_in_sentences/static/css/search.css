@@ -1,0 +1,12 @@
+.row {
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+
+.sentence-list-container a {
+    color: #333333;
+    text-decoration: none;
+}
+.sentence-list-container .english-sentence{
+    font-size: 16px;
+}

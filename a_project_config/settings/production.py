@@ -37,7 +37,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['learnenglish.qingquanli.com', 'localhost', 'en.fatlitalk.com']
+ALLOWED_HOSTS = ['learnenglish.qingquanli.com', 'localhost',]
 
 
 # Application definition
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     # Local
     'accounts.apps.AccountsConfig',
     'words_in_sentences.apps.WordsInSentencesConfig',
+    'homepage.apps.HomepageConfig',
 ]
 
 MIDDLEWARE = [

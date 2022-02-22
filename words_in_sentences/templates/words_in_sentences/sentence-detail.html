@@ -1,0 +1,60 @@
+{% extends 'homepage/base.html' %}
+
+{% load static %}
+
+{% block css_header %}
+    <link rel="stylesheet" href="{% static 'css/sentence-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 sentence-detail-container">
+                <div class="english-sentence">
+                    {{ sentence.english_sentence|linebreaks }}
+                </div>
+                
+                {# TODO: highlight_word #}
+
+                {% if sentence.chinese_translation %}
+                    <div class="chinese-sentence">
+                        {{ sentence.chinese_translation|linebreaks }}
+                    </div>
+                {% endif %}
+
+                {% if sentence.original_source %}
+                    <div class="original-source">
+                        Original source:
+                        <br>
+                        <a href="{{ sentence.original_source }}">{{ sentence.original_source }}</a>
+                    </div>
+                {% endif %}
+
+                {% if sentence.note %}
+                    <div class="note">
+                        Note:
+                        <br>
+                        {{ sentence.note|linebreaks }}
+                    </div>
+                {% endif %}
+
+                <div class="created-time-and-tag">
+                    <small>
+                        <span class="glyphicon glyphicon-time"></span>
+                        {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }}
+                    </small>
+                    {% for tag in sentence.tags.all %}
+                        {% if tag %}
+                            <small>
+                                &nbsp;&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-tag"></span>
+                                {{ tag.name }}
+                            </small>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div><!-- End sentence-detail-container -->
+        </div><!-- End .row -->
+    </div><!-- End .container -->
+{% endblock %}

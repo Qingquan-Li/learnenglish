@@ -13,9 +13,11 @@ One of the effective ways to learn English is to learn words through sentences.
     - [x] PostgreSQL 12.9
 - Backend:
     - [x] Web framework: Django 3.2
-        - [ ] HTMX ([To issue AJAX requests directly from HTML](https://htmx.org/docs/#ajax))
     - [x] API framework: Django REST framework
     - [x] WSGI server: Gunicorn
     - [x] Reverse proxy: Nginx
+    - [ ] Cache framework: Redis
 - Front-end:
+    - [x] Bootstrap
+    - [ ] HTMX
     - [ ] React
