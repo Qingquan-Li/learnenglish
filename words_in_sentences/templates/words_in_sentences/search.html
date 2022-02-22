@@ -3,61 +3,60 @@
 {% load static %}
 
 {% block css_header %}
-    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="stylesheet" href="{% static 'words_in_sentences/css/search.css' %}">
 {% endblock %}
 
 {% block content %}
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 search-container">
-
-                    <form method='GET' action="{% url 'words_in_sentences:search' %}">
-                        <div class="input-group input-group-lg">
-                            <input type="text" name="q" class="form-control" placeholder="search sentences">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                    <br>
-                    {% if query %}
-                        {% if results %}
-                            {% for item in results %}
-                                <div class="sentence-list-container">
-                                    <a href="{% url 'words_in_sentences:sentence-detail' pk=item.pk %}">
-                                        <div class="panel panel-success">
-                                            <div class="panel-body">
-                                                <div class="english-sentence">
-                                                    {{ item.english_sentence|linebreaks }}
-                                                </div>
-                                                {% if item.chinese_translation %}
-                                                    {{ item.chinese_translation|linebreaks }}
-                                                {% endif %}
-                                                <small>
-                                                    <span class="glyphicon glyphicon-time"></span>
-                                                    {{ item.created_at|date:"SHORT_DATE_FORMAT" }}
-                                                </small>
-                                                {% for tag in item.tags.all %}
-                                                    {% if tag %}
-                                                        <small>
-                                                            &nbsp;&nbsp;&nbsp;
-                                                            <span class="glyphicon glyphicon-tag"></span>
-                                                            {{ tag.name }}
-                                                        </small>
-                                                    {% endif %}
-                                                {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 search-container">
+                <form method='GET' action="{% url 'words_in_sentences:search' %}">
+                    <div class="input-group input-group-lg">
+                        <input type="text" name="q" class="form-control" placeholder="search sentences">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <br>
+                {% if query %}
+                    {% if results %}
+                        {% for item in results %}
+                            <div class="sentence-list-container">
+                                <a href="{% url 'words_in_sentences:sentence-detail' pk=item.pk %}">
+                                    <div class="panel panel-success">
+                                        <div class="panel-body">
+                                            <div class="english-sentence">
+                                                {{ item.english_sentence|linebreaks }}
                                             </div>
+                                            {% if item.chinese_translation %}
+                                                {{ item.chinese_translation|linebreaks }}
+                                            {% endif %}
+                                            <small>
+                                                <span class="glyphicon glyphicon-time"></span>
+                                                {{ item.created_at|date:"SHORT_DATE_FORMAT" }}
+                                            </small>
+                                            {% for tag in item.tags.all %}
+                                                {% if tag %}
+                                                    <small>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <span class="glyphicon glyphicon-tag"></span>
+                                                        {{ tag.name }}
+                                                    </small>
+                                                {% endif %}
+                                            {% endfor %}
                                         </div>
-                                    </a>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <h5>Oops! Your search did not match any english sentences.</h5>
-                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h5>Oops! Your search did not match any english sentences.</h5>
                     {% endif %}
-                </div><!-- End col-sm-8 -->
-            </div><!-- End row -->
-        </div><!-- End container -->
+                {% endif %}
+            </div><!-- End col-sm-8 -->
+        </div><!-- End row -->
+    </div><!-- End container -->
 {% endblock %}

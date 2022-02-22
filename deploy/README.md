@@ -16,7 +16,7 @@ If you hava added/changed static files (e.g. images, JavaScript, CSS),
 you should run the `collectstatic` management command:
 
 ```bash
-$ python manage.py collectstatic [--settings=...]
+$ python manage.py collectstatic --settings=a_project_config.settings.local
 ```
 
 ## 3. Migrations

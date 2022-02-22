@@ -1,0 +1,47 @@
+{% extends 'homepage/base.html' %}
+
+{% load static %}
+
+{% block css_header %}
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+{% endblock %}
+
+{# docs.djangoproject.com/en/3.2/topics/auth/default/#module-django.contrib.auth.views #}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">LearnEnglish</h3>
+                    </div>
+                    <div class="panel-body">
+                        <br>
+                        {% if not user.is_authenticated %}
+                            {% if form.errors %}
+                                <p>Your username and password didn't match. Please try again.</p>
+                            {% endif %}
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                {# as_p will render them wrapped in <p> tags #}
+                                {{ form.as_p }}
+                                <input type="hidden" name="next" value="{{ next|default:'/' }}">
+                                <br>
+                                <button type="submit" class="btn btn-success btn-block">Login</button>
+                            </form>
+                        {% else %}
+                            <div>
+                                <p>Hi {{ user.username }}, you are already logged in.</p>
+                                <br>
+                                <p>
+                                    <a href="/" class="btn btn-default" role="button">Back to Home</a>
+                                    <a href="{% url 'accounts:logout' %}" class="btn btn-danger" role="button">Logout</a>
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div><!-- End panel-body -->
+                </div><!-- End panel-->
+            </div><!-- End col-sm-4 -->
+        </div><!-- End row -->
+    </div><!-- End container -->
+{% endblock %}
