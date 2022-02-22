@@ -12,7 +12,7 @@ $ python manage.py check --deploy [--settings=...]
 > References:
 > https://docs.djangoproject.com/en/3.2/howto/static-files/#deployment
 
-If you hava added new static files (e.g. images, JavaScript, CSS),
+If you hava added/changed static files (e.g. images, JavaScript, CSS),
 you should run the `collectstatic` management command:
 
 ```bash
