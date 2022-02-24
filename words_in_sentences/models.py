@@ -65,7 +65,7 @@ class Sentence(CommonInfo):
     # docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url
     def get_absolute_url(self):
         # return reverse('api_v1_words_in_sentences:sentence-detail', kwargs={'pk': self.pk})
-        return reverse('words_in_sentences:sentence-detail', kwargs={'pk': self.pk})
+        return reverse('words_in_sentences:sentence-detail-with-slug', kwargs={'pk': self.pk, 'slug': self.slug})
 
     def __str__(self):
         return self.english_sentence

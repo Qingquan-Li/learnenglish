@@ -1,6 +1,7 @@
 from unicodedata import name
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 from django.views import generic
 from django.db.models import Q
 
@@ -36,15 +37,18 @@ class SentenceList(generic.ListView):
         return context
 
 
-def sentence_detail(request, pk):
+def sentence_detail(request, pk, slug=None):
     # sentence = Sentence.objects.get(pk=pk)
     sentence = get_object_or_404(Sentence, pk=pk)
+    # stackoverflow.com/questions/31003934
+    if slug != sentence.slug:
+        # Either slug is wrong or None
+        return redirect(sentence.get_absolute_url())
     return render(
         request,
         'words_in_sentences/sentence-detail.html',
         {'sentence': sentence}
     )
-
 
 
 def search(request):

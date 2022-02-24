@@ -57,7 +57,7 @@ class SentenceModelTest(TestCase):
         self.assertEqual(
             self.sentence.get_absolute_url(),
             # '/api/v1/words-in-sentences/sentences/{id}/'.format(id=self.sentence.pk)
-            '/words-in-sentences/{id}/'.format(id=self.sentence.pk)
+            '/words-in-sentences/{id}/{slug}'.format(id=self.sentence.pk, slug=self.sentence.slug)
         )
 
 
