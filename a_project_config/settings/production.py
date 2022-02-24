@@ -54,11 +54,13 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     'corsheaders',
+    'ckeditor',
 
     # Local
     'accounts.apps.AccountsConfig',
     'words_in_sentences.apps.WordsInSentencesConfig',
     'homepage.apps.HomepageConfig',
+    'writing.apps.WritingConfig',
 ]
 
 MIDDLEWARE = [

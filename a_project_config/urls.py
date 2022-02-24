@@ -20,11 +20,15 @@ from django.urls import include  # new
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
+
     # API path:
     path('api/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),
+
     # Website URL path:
     # path('', include('homepage.urls')),
-    path('accounts/', include('accounts.urls')),
+    # Set words-in-sentences as the homepage.
     path('', include('words_in_sentences.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('writing/', include('writing.urls')),
 ]

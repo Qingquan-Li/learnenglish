@@ -1,6 +1,8 @@
 asgiref==3.4.1
 Django==3.2.9
+django-ckeditor==6.2.0
 django-cors-headers==3.10.0
+django-js-asset==2.0.0
 djangorestframework==3.12.4
 docutils==0.18
 flake8==4.0.1
