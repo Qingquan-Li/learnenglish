@@ -13,8 +13,14 @@
     color: #333333;
     text-decoration: none;
 }
-.main-container .sentence-list-container .english-sentence{
+.main-container .sentence-list-container .english-sentence {
     font-size: 16px;
+}
+.main-container .sentence-list-container .chinese-sentence {
+    color: #4D4D4D;
+}
+.main-container .sentence-list-container .time-and-tags-widget {
+    color: #888888;
 }
 
 .sidebar-container .tags-title {

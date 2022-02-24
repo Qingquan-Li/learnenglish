@@ -38,7 +38,7 @@
                     </div>
                 {% endif %}
 
-                <div class="created-time-and-tag">
+                <div class="time-and-tags-widget">
                     <small>
                         <span class="glyphicon glyphicon-time"></span>
                         {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }}
@@ -47,8 +47,10 @@
                         {% if tag %}
                             <small>
                                 &nbsp;&nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-tag"></span>
-                                {{ tag.name }}
+                                <a href="{% url 'words_in_sentences:sentence-list' %}?tag={{ tag.name }}">
+                                    <span class="glyphicon glyphicon-tag"></span>
+                                    {{ tag.name }}
+                                </a>
                             </small>
                         {% endif %}
                     {% endfor %}

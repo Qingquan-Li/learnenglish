@@ -9,13 +9,21 @@
 }
 .sentence-detail-container .chinese-sentence{
     padding-bottom: 10px;
+    color: #4D4D4D;
 }
 .sentence-detail-container .original-source{
     padding-bottom: 20px;
+    color: #4D4D4D;
 }
 .sentence-detail-container .note{
     padding-bottom: 10px;
+    color: #4D4D4D;
 }
-.sentence-detail-container .created-time-and-tag{
+.sentence-detail-container .time-and-tags-widget{
     padding: 10px 0;
+    color: #888888;
+}
+.sentence-detail-container .time-and-tags-widget a{
+    color: #888888;
+    /* text-decoration: none; */
 }

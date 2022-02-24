@@ -1,5 +1,4 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
 from . import views
 
 # docs.djangoproject.com/en/3.2/intro/tutorial03/#namespacing-url-names
