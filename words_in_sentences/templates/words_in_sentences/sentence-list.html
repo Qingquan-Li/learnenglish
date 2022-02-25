@@ -26,7 +26,7 @@
                 <div class="sentence-list-container">
                     {% for sentence in sentence_list %}
                         <a href="{% url 'words_in_sentences:sentence-detail' pk=sentence.pk %}">
-                            <div class="panel panel-default">
+                            <div class="panel panel-success">
                                 <div class="panel-body">
                                     <div class="english-sentence">
                                         {{ sentence.english_sentence|linebreaks }}

@@ -9,6 +9,9 @@
 .main-container .search-container {
     padding-bottom: 20px;
 }
+.main-container .sentence-list-container .panel .panel-body{
+    background-color: #deecdd;
+}
 .main-container .sentence-list-container a {
     color: #333333;
     text-decoration: none;

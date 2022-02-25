@@ -23,6 +23,9 @@
                 <br>
                 {% if query %}
                     {% if results %}
+                        <small>Search results for <b><i>{{ query }}</i></b></small>
+                        <br>
+                        <br>
                         {% for item in results %}
                             <div class="sentence-list-container">
                                 <a href="{% url 'words_in_sentences:sentence-detail' pk=item.pk %}">

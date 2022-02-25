@@ -2,5 +2,10 @@
     font-family: 'Dancing Script', cursive;
 }
 body {
-    background-color: #F4F4F4;
+    background-color: #c1dfc4;
+}
+.navbar {
+    /* background-color: #deecdd; */
+    /* https://webgradients.com/ */
+    background-image: linear-gradient(to top, #deecdd 0%, #c1dfc4 100%);
 }
