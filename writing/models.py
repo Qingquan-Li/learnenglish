@@ -43,11 +43,12 @@ class Article(CommonInfo):
     # id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True, null=True)
+    summary = models.TextField(blank=True, null=True)
     # body = models.TextField(blank=True, null=True)
     body = RichTextField(blank=True, null=True)
     tags = models.ManyToManyField(to=Tag, blank=True)  # blank is stored as ''
     author = models.ForeignKey(to=CustomUser, on_delete=models.SET_NULL,
-                                   to_field='id', null=True)
+                                   to_field='id', null=True, editable=False)
 
     class Meta:
         ordering = ['-id']

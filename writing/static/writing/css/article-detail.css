@@ -1,0 +1,16 @@
+.row {
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+.article-detail-container .time-and-tags-widget{
+    padding: 10px 0;
+}
+.article-detail-container .time-and-tags-widget a{
+    color: #333333;
+    text-decoration: none;
+}
+
+.article-detail-container .body {
+    line-height: 2;
+    font-size: 18px;
+}

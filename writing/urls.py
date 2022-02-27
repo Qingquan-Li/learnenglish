@@ -5,13 +5,13 @@ from . import views
 app_name = 'writing'
 
 urlpatterns = [
-    # path('', views.ArticleList.as_view(), name='article-list'),
-    # path('writing/<int:pk>/', views.article_detail, name='article-detail'),
-    # # stackoverflow.com/questions/31003934
-    # path(
-    #     'writing/<int:pk>/<slug:slug>',
-    #     views.article_detail,
-    #     name='article-detail-with-slug'
-    # ),
-    # path('writing/search/', views.search, name="search"),
+    path('', views.ArticleList.as_view(), name='article-list'),
+    path('<int:pk>/', views.article_detail, name='article-detail'),
+    # stackoverflow.com/questions/31003934
+    path(
+        '<int:pk>/<slug:slug>',
+        views.article_detail,
+        name='article-detail-with-slug'
+    ),
+    # path('search/', views.search, name="article-search"),
 ]

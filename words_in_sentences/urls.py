@@ -11,5 +11,5 @@ urlpatterns = [
     path('words-in-sentences/<int:pk>/', views.sentence_detail, name='sentence-detail'),
     # stackoverflow.com/questions/31003934
     path('words-in-sentences/<int:pk>/<slug:slug>', views.sentence_detail, name='sentence-detail-with-slug'),
-    path('words-in-sentences/search/', views.search, name="search"),
+    path('words-in-sentences/search/', views.search, name="sentence-search"),
 ]

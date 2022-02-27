@@ -3,61 +3,65 @@
 {% load static %}
 
 {% block css_header %}
-    <link rel="stylesheet" href="{% static 'words_in_sentences/css/sentence-list.css' %}">
+    <link rel="stylesheet" href="{% static 'writing/css/article-list.css' %}">
 {% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-sm-9 main-container">
-                <div class="search-container">
-                    <form method='GET' action="{% url 'words_in_sentences:sentence-search' %}">
-                        <div class="input-group input-group-lg">
-                            <input type="text" name="q" class="form-control" placeholder="search words or sentences">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="sentence-list-container">
-                    {% for sentence in sentence_list %}
-                        {% if sentence.is_active is True %}
-                            <a href="{% url 'words_in_sentences:sentence-detail' pk=sentence.pk %}">
-                                <div class="panel panel-success">
-                                    <div class="panel-body">
-                                        <div class="english-sentence">
-                                            {{ sentence.english_sentence|linebreaks }}
-                                        </div>
-                                        {% if sentence.chinese_translation %}
-                                            <div class="chinese-sentence">
-                                                {{ sentence.chinese_translation|linebreaks }}
-                                            </div>
-                                        {% endif %}
-                                        <div class="time-and-tags-widget">
-                                            <small>
-                                                <span class="glyphicon glyphicon-time"></span>
-                                                {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }}
-                                            </small>
-                                            {% for tag in sentence.tags.all %}
-                                                {% if tag %}
-                                                    <small>
-                                                        &nbsp;&nbsp;&nbsp;
+                {% comment %}
+                    <div class="search-container">
+                        <form method='GET' action="{% url 'writing:article-search' %}">
+                            <div class="input-group input-group-lg">
+                                <input type="text" name="q" class="form-control" placeholder="search article">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                {% endcomment %}
+                <div class="article-list-container">
+                    {% for article in article_list %}
+                        {% if article.is_active is True %}
+                            <div class="panel panel-success">
+                                <div class="panel-body">
+                                    <div class="title">
+                                        <a href="{% url 'writing:article-detail' pk=article.pk %}">
+                                            <h2>{{ article.title }}</h2>
+                                        </a>
+                                    </div>
+                                    <div class="time-and-tags-widget">
+                                        <small>
+                                            <span class="glyphicon glyphicon-time"></span>
+                                            {{ article.created_time|date:"SHORT_DATE_FORMAT" }}
+                                        </small>
+                                        {% for tag in article.tags.all %}
+                                            {% if tag %}
+                                                <small>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <a href="{% url 'writing:article-list' %}?tag={{ tag.name }}">
                                                         <span class="glyphicon glyphicon-tag"></span>
                                                         {{ tag.name }}
-                                                    </small>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div><!-- End time-and-tags-widget -->
-                                    </div><!-- End panel-body -->
-                                </div><!-- End panel -->
-                            </a>
+                                                    </a>
+                                                </small>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div><!-- End time-and-tags-widget -->
+                                    <div class="summary">
+                                        {{ article.summary|linebreaks }}
+                                    </div>
+                                    <a class="btn btn-default" href="{% url 'writing:article-detail' pk=article.pk %}" role="button">
+                                        Read more >
+                                    </a>
+                                </div><!-- End panel-body -->
+                            </div><!-- End panel -->
                         {% endif %}
                     {% endfor %}
-                </div><!-- End sentence-list-container -->
+                </div><!-- End article-list-container -->
 
                 {% if is_paginated %}
                     <nav>
@@ -133,7 +137,7 @@
                     <ul class="list-unstyled">
                         {% for tag in tag_list %}
                             <li>
-                                <a href="{% url 'words_in_sentences:sentence-list' %}?tag={{ tag.name }}">
+                                <a href="{% url 'writing:article-list' %}?tag={{ tag.name }}">
                                     {{ tag.name }}
                                 </a>
                             </li>

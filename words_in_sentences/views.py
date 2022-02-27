@@ -1,4 +1,3 @@
-from unicodedata import name
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
@@ -33,7 +32,7 @@ class SentenceList(generic.ListView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the tags
-        context['tag_list'] = Tag.objects.all().order_by('id')
+        context['tag_list'] = Tag.objects.all().order_by('name')
         return context
 
 
