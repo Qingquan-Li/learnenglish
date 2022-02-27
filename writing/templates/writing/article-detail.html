@@ -19,7 +19,7 @@
                             <span class="glyphicon glyphicon-time"></span>
                             {% if article.version > 1 %}
                                 Posted on {{ article.created_time|date:"SHORT_DATE_FORMAT" }},
-                                Modified on {{ article.created_time|date:"SHORT_DATE_FORMAT" }}
+                                Modified on {{ article.modified_time|date:"SHORT_DATE_FORMAT" }}
                             {% else %}
                                 {{ article.created_time|date:"SHORT_DATE_FORMAT" }}
                             {% endif %}
