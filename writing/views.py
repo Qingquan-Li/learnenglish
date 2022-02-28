@@ -2,9 +2,12 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.views import generic
-from django.db.models import Q
+# from django.db.models import Q
+from django.contrib.postgres.search import (SearchQuery, SearchVector,
+                                            SearchRank, SearchHeadline)
 
 from .models import Article, Tag
+
 
 # Django pagination:
 # https://docs.djangoproject.com/en/3.2/topics/pagination/
@@ -18,6 +21,7 @@ class ArticleList(generic.ListView):
     template_name = 'writing/article-list.html'
     context_object_name = 'article_list'
     paginate_by = 10
+
     # queryset = Article.objects.all()
 
     # docs.djangoproject.com/en/3.2/topics/class-based-views/generic-display/#dynamic-filtering
@@ -43,11 +47,7 @@ def article_detail(request, pk, slug=None):
     if slug != article.slug:
         # Either slug is wrong or None
         return redirect(article.get_absolute_url())
-    return render(
-        request,
-        'writing/article-detail.html',
-        {'article': article}
-    )
+    return render(request, 'writing/article-detail.html', {'article': article})
 
 
 # def search(request):
@@ -65,5 +65,41 @@ def article_detail(request, pk, slug=None):
 #     return render(request, 'writing/search.html', context)
 
 
-# TODO: Use PostgreSQL’s full text search.
+# Use PostgreSQL’s full text search.
 # https://docs.djangoproject.com/en/3.2/ref/contrib/postgres/search/
+def search(request):
+    # The empty string handles an empty "request"
+    query = request.GET.get('q', '')
+    if query:
+        search_query = SearchQuery(query)
+        # search_vector = SearchVector('title', 'summary', 'body')
+        search_vector = SearchVector('title', weight='A') + SearchVector(
+            'summary', weight='B') + SearchVector('body', weight='B')
+        search_rank = SearchRank(search_vector, search_query)
+        search_headline = SearchHeadline('body', search_query)
+        results = Article.objects.annotate(rank=search_rank).annotate(
+            headline=search_headline).filter(rank__gte=0.001).order_by('-rank')
+    else:
+        results = []
+    context = {'results': results, 'query': query}
+    return render(request, 'writing/search.html', context)
+
+# def search(request):
+#     q = request.GET.get('q')
+
+#     if q:
+#         # vector = SearchVector('title', 'body')
+#         # query = SearchQuery(q)
+#         # article_list = Article.objects.annotate(search=vector).filter(search=query)
+#         search_query = SearchQuery(q)
+#         # search_vector = SearchVector('title', 'summary', 'body')
+#         search_vector = SearchVector('title', weight='A') + SearchVector(
+#             'summary', weight='B') + SearchVector('body', weight='B')
+#         search_rank = SearchRank(search_vector, search_query)
+#         search_headline = SearchHeadline('body', search_query)
+#         article_list = Article.objects.annotate(rank=search_rank).annotate(
+#             headline=search_headline).filter(rank__gte=0.001).order_by('-rank')
+#     else:
+#         article_list = None
+#     context = {'article_list': article_list}
+#     return render(request, 'writing/search.html', context)

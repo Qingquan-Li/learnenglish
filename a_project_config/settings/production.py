@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'ckeditor',
+    'django.contrib.postgres',
 
     # Local
     'accounts.apps.AccountsConfig',

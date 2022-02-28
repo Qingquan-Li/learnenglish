@@ -4,6 +4,7 @@
 }
 
 .main-container {
+    /* space to Tags (sidebar-container) on Mobile devices */
     padding-bottom: 30px;
 }
 .main-container .search-container {
@@ -23,7 +24,7 @@
     color: #4D4D4D;
 }
 .main-container .sentence-list-container .time-and-tags-widget {
-    color: #888888;
+    color: #4D4D4D;
 }
 
 .sidebar-container .tags-title {

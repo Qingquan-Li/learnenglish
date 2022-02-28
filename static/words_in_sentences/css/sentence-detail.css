@@ -3,19 +3,33 @@
     margin-bottom: 60px;
 }
 
+.sentence-detail-container {
+    line-height: 1.6;
+}
 .sentence-detail-container .english-sentence{
     font-size: 16px;
     padding-bottom: 10px;
 }
 .sentence-detail-container .chinese-sentence{
     padding-bottom: 10px;
+    color: #4D4D4D;
 }
 .sentence-detail-container .original-source{
     padding-bottom: 20px;
+    color: #4D4D4D;
 }
 .sentence-detail-container .note{
     padding-bottom: 10px;
+    color: #4D4D4D;
 }
-.sentence-detail-container .created-time-and-tag{
+.sentence-detail-container .time-and-tags-widget{
     padding: 10px 0;
+    color: #4D4D4D;
+}
+.sentence-detail-container .time-and-tags-widget a{
+    color: #4D4D4D;
+    /* text-decoration: none; */
+}
+.sentence-detail-container .time-and-tags-widget a:hover{
+    text-decoration-color: rgb(156, 211, 146);
 }

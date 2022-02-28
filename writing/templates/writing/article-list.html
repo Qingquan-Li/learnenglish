@@ -10,20 +10,18 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9 main-container">
-                {% comment %}
-                    <div class="search-container">
-                        <form method='GET' action="{% url 'writing:article-search' %}">
-                            <div class="input-group input-group-lg">
-                                <input type="text" name="q" class="form-control" placeholder="search article">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                {% endcomment %}
+                <div class="search-container">
+                    <form method='GET' action="{% url 'writing:article-search' %}">
+                        <div class="input-group input-group-lg">
+                            <input type="text" name="q" class="form-control" placeholder="search article">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
                 <div class="article-list-container">
                     {% for article in article_list %}
                         {% if article.is_active is True %}

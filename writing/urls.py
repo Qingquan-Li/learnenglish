@@ -13,5 +13,5 @@ urlpatterns = [
         views.article_detail,
         name='article-detail-with-slug'
     ),
-    # path('search/', views.search, name="article-search"),
+    path('search/', views.search, name="article-search"),
 ]
