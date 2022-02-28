@@ -3,6 +3,9 @@
     margin-bottom: 60px;
 }
 
+.sentence-list-container .panel .panel-body{
+    background-color: #deecdd;
+}
 .sentence-list-container a {
     color: #333333;
     text-decoration: none;

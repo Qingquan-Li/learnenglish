@@ -1,7 +1,6 @@
 # LearnEnglish
 
-This website is for the people who speak English as a second language (ESL) and whose native language is Chinese to learn English.
-
+This website is designed for people, especially those who speak English as a Second Language (ESL) and whose native language is Chinese, to learn English.
 
 ## Website solution
 

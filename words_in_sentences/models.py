@@ -51,7 +51,7 @@ class Sentence(CommonInfo):
     note = models.TextField(blank=True, null=True)
     tags = models.ManyToManyField(to=Tag, blank=True)
     created_by = models.ForeignKey(to=CustomUser, on_delete=models.SET_NULL,
-                                   to_field='id', blank=True, null=True)
+                                   to_field='id', blank=True, null=True, editable=False)
     # publish_at = models.DateTimeField(default=timezone.now)
     # Assuming you are in New York, and you use the defalt `TIME_ZONE = 'UTC'`, the admin page
     # will remind you as shown below until you configure `TIME_ZONE = 'America/New_York'`:
@@ -65,7 +65,7 @@ class Sentence(CommonInfo):
     # docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url
     def get_absolute_url(self):
         # return reverse('api_v1_words_in_sentences:sentence-detail', kwargs={'pk': self.pk})
-        return reverse('words_in_sentences:sentence-detail', kwargs={'pk': self.pk})
+        return reverse('words_in_sentences:sentence-detail-with-slug', kwargs={'pk': self.pk, 'slug': self.slug})
 
     def __str__(self):
         return self.english_sentence

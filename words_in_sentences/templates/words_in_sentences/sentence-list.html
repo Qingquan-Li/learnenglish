@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-sm-9 main-container">
                 <div class="search-container">
-                    <form method='GET' action="{% url 'words_in_sentences:search' %}">
+                    <form method='GET' action="{% url 'words_in_sentences:sentence-search' %}">
                         <div class="input-group input-group-lg">
-                            <input type="text" name="q" class="form-control" placeholder="search sentences">
+                            <input type="text" name="q" class="form-control" placeholder="search words or sentences">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
                                     <span class="glyphicon glyphicon-search"></span>
@@ -25,33 +25,39 @@
 
                 <div class="sentence-list-container">
                     {% for sentence in sentence_list %}
-                        <a href="{% url 'words_in_sentences:sentence-detail' pk=sentence.pk %}">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="english-sentence">
-                                        {{ sentence.english_sentence|linebreaks }}
-                                    </div>
-                                    {% if sentence.chinese_translation %}
-                                        {{ sentence.chinese_translation|linebreaks }}
-                                    {% endif %}
-                                    <small>
-                                        <span class="glyphicon glyphicon-time"></span>
-                                        {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }}
-                                    </small>
-                                    {% for tag in sentence.tags.all %}
-                                        {% if tag %}
-                                            <small>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <span class="glyphicon glyphicon-tag"></span>
-                                                {{ tag.name }}
-                                            </small>
+                        {% if sentence.is_active is True %}
+                            <a href="{% url 'words_in_sentences:sentence-detail' pk=sentence.pk %}">
+                                <div class="panel panel-success">
+                                    <div class="panel-body">
+                                        <div class="english-sentence">
+                                            {{ sentence.english_sentence|linebreaks }}
+                                        </div>
+                                        {% if sentence.chinese_translation %}
+                                            <div class="chinese-sentence">
+                                                {{ sentence.chinese_translation|linebreaks }}
+                                            </div>
                                         {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </a>
+                                        <div class="time-and-tags-widget">
+                                            <small>
+                                                <span class="glyphicon glyphicon-time"></span>
+                                                {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }}
+                                            </small>
+                                            {% for tag in sentence.tags.all %}
+                                                {% if tag %}
+                                                    <small>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <span class="glyphicon glyphicon-tag"></span>
+                                                        {{ tag.name }}
+                                                    </small>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div><!-- End time-and-tags-widget -->
+                                    </div><!-- End panel-body -->
+                                </div><!-- End panel -->
+                            </a>
+                        {% endif %}
                     {% endfor %}
-                </div>
+                </div><!-- End sentence-list-container -->
 
                 {% if is_paginated %}
                     <nav>

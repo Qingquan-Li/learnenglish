@@ -4,17 +4,27 @@
 }
 
 .main-container {
+    /* space to Tags (sidebar-container) on Mobile devices */
     padding-bottom: 30px;
 }
 .main-container .search-container {
     padding-bottom: 20px;
 }
+.main-container .sentence-list-container .panel .panel-body{
+    background-color: #deecdd;
+}
 .main-container .sentence-list-container a {
     color: #333333;
     text-decoration: none;
 }
-.main-container .sentence-list-container .english-sentence{
+.main-container .sentence-list-container .english-sentence {
     font-size: 16px;
+}
+.main-container .sentence-list-container .chinese-sentence {
+    color: #4D4D4D;
+}
+.main-container .sentence-list-container .time-and-tags-widget {
+    color: #4D4D4D;
 }
 
 .sidebar-container .tags-title {

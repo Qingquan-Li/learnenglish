@@ -10,50 +10,62 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 sentence-detail-container">
-                <div class="english-sentence">
-                    {{ sentence.english_sentence|linebreaks }}
-                </div>
-                
-                {# TODO: highlight_word #}
-
-                {% if sentence.chinese_translation %}
-                    <div class="chinese-sentence">
-                        {{ sentence.chinese_translation|linebreaks }}
+                {% if sentence.is_active is True %}
+                    <div class="english-sentence">
+                        {{ sentence.english_sentence|linebreaks }}
                     </div>
-                {% endif %}
+                    
+                    {# TODO: highlight_word #}
 
-                {% if sentence.original_source %}
-                    <div class="original-source">
-                        Original source:
-                        <br>
-                        <a href="{{ sentence.original_source }}">{{ sentence.original_source }}</a>
+                    {% if sentence.chinese_translation %}
+                        <div class="chinese-sentence">
+                            {{ sentence.chinese_translation|linebreaks }}
+                        </div>
+                    {% endif %}
+
+                    {% if sentence.original_source %}
+                        <div class="original-source">
+                            Original source:
+                            <br>
+                            <a href="{{ sentence.original_source }}">{{ sentence.original_source }}</a>
+                        </div>
+                    {% endif %}
+
+                    {% if sentence.note %}
+                        <div class="note">
+                            Note:
+                            <br>
+                            {{ sentence.note|linebreaks }}
+                        </div>
+                    {% endif %}
+
+                    <div class="time-and-tags-widget">
+                        <small>
+                            <span class="glyphicon glyphicon-time"></span>
+                            {% if sentence.version > 1 %}
+                                Posted on {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }},
+                                Modified on {{ sentence.modified_at|date:"SHORT_DATE_FORMAT" }}
+                            {% else %}
+                                {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }}
+                            {% endif %}
+                        </small>
+                        {% for tag in sentence.tags.all %}
+                            {% if tag %}
+                                <small>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a href="{% url 'words_in_sentences:sentence-list' %}?tag={{ tag.name }}">
+                                        <span class="glyphicon glyphicon-tag"></span>
+                                        {{ tag.name }}
+                                    </a>
+                                </small>
+                            {% endif %}
+                        {% endfor %}
                     </div>
+                {% else %}
+                    <h1>Not Found</h1>
+                    <br>
+                    The requested resource may have been hidden or deleted.
                 {% endif %}
-
-                {% if sentence.note %}
-                    <div class="note">
-                        Note:
-                        <br>
-                        {{ sentence.note|linebreaks }}
-                    </div>
-                {% endif %}
-
-                <div class="created-time-and-tag">
-                    <small>
-                        <span class="glyphicon glyphicon-time"></span>
-                        {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }}
-                    </small>
-                    {% for tag in sentence.tags.all %}
-                        {% if tag %}
-                            <small>
-                                &nbsp;&nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-tag"></span>
-                                {{ tag.name }}
-                            </small>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-
             </div><!-- End sentence-detail-container -->
         </div><!-- End .row -->
     </div><!-- End .container -->

@@ -10,9 +10,9 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 search-container">
-                <form method='GET' action="{% url 'words_in_sentences:search' %}">
+                <form method="GET">
                     <div class="input-group input-group-lg">
-                        <input type="text" name="q" class="form-control" placeholder="search sentences">
+                        <input type="text" name="q" class="form-control" placeholder="search words or sentences">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -23,6 +23,9 @@
                 <br>
                 {% if query %}
                     {% if results %}
+                        <small>{{ results|length }} results for <i>{{ query }}</i></small>
+                        <br>
+                        <br>
                         {% for item in results %}
                             <div class="sentence-list-container">
                                 <a href="{% url 'words_in_sentences:sentence-detail' pk=item.pk %}">
