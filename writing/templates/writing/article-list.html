@@ -13,7 +13,7 @@
                 <div class="search-container">
                     <form method='GET' action="{% url 'writing:article-search' %}">
                         <div class="input-group input-group-lg">
-                            <input type="text" name="q" class="form-control" placeholder="search article">
+                            <input type="text" name="q" class="form-control" placeholder="search articles">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
                                     <span class="glyphicon glyphicon-search"></span>
@@ -29,7 +29,7 @@
                                 <div class="panel-body">
                                     <div class="title">
                                         <a href="{% url 'writing:article-detail' pk=article.pk %}">
-                                            <h2>{{ article.title }}</h2>
+                                            <h3>{{ article.title }}</h3>
                                         </a>
                                     </div>
                                     <div class="time-and-tags-widget">
