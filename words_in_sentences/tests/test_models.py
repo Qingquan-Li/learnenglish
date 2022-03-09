@@ -10,8 +10,8 @@ class SentenceModelTest(TestCase):
     def setUpTestData(cls) -> None:
         cls.sentence = Sentence.objects.create(
             # id,
-            # created_at,
-            # modified_at,
+            # created_time,
+            # modified_time,
             # version,
             # is_active,
             english_sentence='first english sentence',
@@ -21,7 +21,7 @@ class SentenceModelTest(TestCase):
             original_source='http://example.com/',
             note='english: /ˈiNG(ɡ)liSH/  [Noun] 英语，英国人  [Verb] 英国化  [Adjective] 英国人的',
             # tags,
-            # created_by,
+            # author,
             # publish_date,
             # is_understand,
         )

@@ -74,7 +74,7 @@ class SentenceViewTests(APITestCase):
         )
         sentence = Sentence.objects.create(
             english_sentence='Fourth english sentence',
-            created_by=self.user
+            author=self.user
         )
         url = reverse('api_v1_words_in_sentences:sentence-detail', args=(sentence.pk,))
         data = {'english_sentence': '4th english sentence'}
@@ -92,7 +92,7 @@ class SentenceViewTests(APITestCase):
         )
         sentence = Sentence.objects.create(
             english_sentence='An english sentence',
-            # created_by=self.user
+            # author=self.user
         )
         url = reverse('api_v1_words_in_sentences:sentence-detail', args=(sentence.pk,))
         data = {'english_sentence': 'One english sentence'}
@@ -109,7 +109,7 @@ class SentenceViewTests(APITestCase):
         )
         sentence = Sentence.objects.create(
             english_sentence='Fifth english sentence',
-            created_by=self.user
+            author=self.user
         )
         url = reverse('api_v1_words_in_sentences:sentence-detail', args=(sentence.pk,))
         response = self.client.delete(url)
@@ -125,7 +125,7 @@ class SentenceViewTests(APITestCase):
         )
         sentence = Sentence.objects.create(
             english_sentence='An english sentence',
-            # created_by=self.user
+            # author=self.user
         )
         url = reverse('api_v1_words_in_sentences:sentence-detail', args=(sentence.pk,))
         response = self.client.delete(url)

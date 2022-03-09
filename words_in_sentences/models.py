@@ -8,8 +8,8 @@ from accounts.models import CustomUser
 
 
 class CommonInfo(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    created_time = models.DateTimeField(auto_now_add=True)
+    modified_time = models.DateTimeField(auto_now=True)
     version = models.PositiveSmallIntegerField(default=0, editable=False)
     is_active = models.BooleanField(default=True)
 
@@ -50,7 +50,7 @@ class Sentence(CommonInfo):
     original_source = models.URLField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
     tags = models.ManyToManyField(to=Tag, blank=True)
-    created_by = models.ForeignKey(to=CustomUser, on_delete=models.SET_NULL,
+    author = models.ForeignKey(to=CustomUser, on_delete=models.SET_NULL,
                                    to_field='id', blank=True, null=True, editable=False)
     # publish_at = models.DateTimeField(default=timezone.now)
     # Assuming you are in New York, and you use the defalt `TIME_ZONE = 'UTC'`, the admin page
