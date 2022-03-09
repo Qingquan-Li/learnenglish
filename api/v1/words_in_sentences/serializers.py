@@ -22,8 +22,8 @@ class SentenceListSerializer(serializers.ModelSerializer):
         model = Sentence
         fields = (
             'id',
-            'created_at',
-            # 'modified_at',
+            'created_time',
+            # 'modified_time',
             # 'version',
             'is_active',
             'english_sentence',
@@ -33,7 +33,7 @@ class SentenceListSerializer(serializers.ModelSerializer):
             # 'original_source',
             'note',
             'tags',
-            # 'created_by',
+            # 'author',
             'publish_date',
             'is_understand',
         )

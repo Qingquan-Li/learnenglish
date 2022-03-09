@@ -39,7 +39,7 @@
                                             {% endif %}
                                             <small>
                                                 <span class="glyphicon glyphicon-time"></span>
-                                                {{ item.created_at|date:"SHORT_DATE_FORMAT" }}
+                                                {{ item.created_time|date:"SHORT_DATE_FORMAT" }}
                                             </small>
                                             {% for tag in item.tags.all %}
                                                 {% if tag %}

@@ -43,10 +43,10 @@
                         <small>
                             <span class="glyphicon glyphicon-time"></span>
                             {% if sentence.version > 1 %}
-                                Posted on {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }},
-                                Modified on {{ sentence.modified_at|date:"SHORT_DATE_FORMAT" }}
+                                Posted on {{ sentence.created_time|date:"SHORT_DATE_FORMAT" }},
+                                Modified on {{ sentence.modified_time|date:"SHORT_DATE_FORMAT" }}
                             {% else %}
-                                {{ sentence.created_at|date:"SHORT_DATE_FORMAT" }}
+                                {{ sentence.created_time|date:"SHORT_DATE_FORMAT" }}
                             {% endif %}
                         </small>
                         {% for tag in sentence.tags.all %}

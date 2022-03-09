@@ -13,8 +13,8 @@ class IsSentenceCreatorOrReadOnly(permissions.BasePermission):
             return True
 
         # Write permissions are only allowed to
-        # the creator(field: created_by) of the sentence.
-        return obj.created_by == request.user
+        # the creator(field: author) of the sentence.
+        return obj.author == request.user
 
 
 # # :( invalid
