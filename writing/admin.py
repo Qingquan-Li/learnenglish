@@ -1,14 +1,12 @@
 from django.contrib import admin
 
-from django.conf import settings
-from django.contrib.auth import get_user_model
 from .models import Tag, Article
 
 admin.site.register(Tag)
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
+    prepopulated_fields = {'slug': ('title', )}
 
     # docs.djangoproject.com/en/3.2/ref/contrib/admin/#django.contrib.admin.ModelAdmin.save_model
     # books.agiliq.com/projects/django-admin-cookbook/en/latest/current_user.html
@@ -16,11 +14,45 @@ class ArticleAdmin(admin.ModelAdmin):
         obj.author = request.user
         super().save_model(request, obj, form, change)
 
-    list_display = ('title',)
+    fieldsets = (
+        (None, {
+            'fields': (
+                'title',
+                'slug',
+                'summary',
+                'body',
+                'tags',
+            )
+        }),
+        ('Readonly fields', {
+            'classes': ('wide', 'extrapretty'),
+            'fields': (
+                'created_time',
+                'modified_time',
+                'version',
+            ),
+        }),
+    )
 
-    list_filter = ('tags', 'created_time',)
+    readonly_fields = (
+        'created_time',
+        'modified_time',
+        'version',
+    )
 
-    search_fields = ('title', 'body',)
+    list_display = (
+        'title',
+    )
+
+    list_filter = (
+        'tags',
+        'created_time',
+    )
+
+    search_fields = (
+        'title',
+        'body',
+    )
 
 
 admin.site.register(Article, ArticleAdmin)
