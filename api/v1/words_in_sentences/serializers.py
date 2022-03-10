@@ -35,7 +35,6 @@ class SentenceListSerializer(serializers.ModelSerializer):
             'tags',
             # 'author',
             'publish_date',
-            'is_understand',
         )
 
 

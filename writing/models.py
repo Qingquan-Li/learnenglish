@@ -32,7 +32,7 @@ class Tag(models.Model):
 
     # docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url
     # def get_absolute_url(self):
-        # return reverse('writing:tag-detail', kwargs={'pk': self.pk})
+    # return reverse('writing:tag-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
@@ -47,18 +47,22 @@ class Article(CommonInfo):
     # body = models.TextField(blank=True, null=True)
     body = RichTextField(blank=True, null=True)
     tags = models.ManyToManyField(to=Tag, blank=True)  # blank is stored as ''
-    author = models.ForeignKey(to=CustomUser, on_delete=models.SET_NULL,
-                                   to_field='id', null=True, editable=False)
+    author = models.ForeignKey(to=CustomUser,
+                               on_delete=models.SET_NULL,
+                               to_field='id',
+                               null=True,
+                               editable=False)
 
     class Meta:
         ordering = ['-id']
 
     # docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url
     def get_absolute_url(self):
-        return reverse(
-            'writing:article-detail-with-slug',
-            kwargs={'pk': self.pk, 'slug': self.slug}
-        )
+        return reverse('writing:article-detail-with-slug',
+                       kwargs={
+                           'pk': self.pk,
+                           'slug': self.slug
+                       })
 
     def __str__(self):
         return self.title

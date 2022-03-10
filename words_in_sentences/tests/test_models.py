@@ -23,7 +23,6 @@ class SentenceModelTest(TestCase):
             # tags,
             # author,
             # publish_date,
-            # is_understand,
         )
 
     def test_version_content(self) -> None:
