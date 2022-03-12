@@ -17,6 +17,7 @@ class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
+                'is_active',
                 'title',
                 'slug',
                 'summary',

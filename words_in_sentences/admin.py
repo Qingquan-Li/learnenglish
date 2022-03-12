@@ -29,6 +29,7 @@ class SentenceAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
+                'is_active',
                 'english_sentence',
                 'highlight_word',
                 'slug',
