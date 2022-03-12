@@ -6,30 +6,35 @@
 .sentence-detail-container {
     line-height: 1.6;
 }
-.sentence-detail-container .english-sentence{
+.sentence-detail-container .english-sentence {
+    padding-bottom: 10px;
+}
+.sentence-detail-container .english-sentence blockquote {
+    margin-left: 0;
+    border-left: 4px solid #00C853;
+    padding: 0 15px;
     font-size: 16px;
-    padding-bottom: 10px;
 }
-.sentence-detail-container .chinese-sentence{
-    padding-bottom: 10px;
-    color: #4D4D4D;
-}
-.sentence-detail-container .original-source{
-    padding-bottom: 20px;
-    color: #4D4D4D;
-}
-.sentence-detail-container .note{
+.sentence-detail-container .chinese-sentence {
     padding-bottom: 10px;
     color: #4D4D4D;
 }
-.sentence-detail-container .time-and-tags-widget{
-    padding: 10px 0;
+.sentence-detail-container .original-source {
+    padding-bottom: 10px;
     color: #4D4D4D;
 }
-.sentence-detail-container .time-and-tags-widget a{
+.sentence-detail-container .note {
+    padding-bottom: 10px;
+    color: #4D4D4D;
+}
+.sentence-detail-container .time-and-tags-widget {
+    padding: 20px 0;
+    color: #4D4D4D;
+}
+.sentence-detail-container .time-and-tags-widget a {
     color: #4D4D4D;
     /* text-decoration: none; */
 }
-.sentence-detail-container .time-and-tags-widget a:hover{
+.sentence-detail-container .time-and-tags-widget a:hover {
     text-decoration-color: rgb(156, 211, 146);
 }

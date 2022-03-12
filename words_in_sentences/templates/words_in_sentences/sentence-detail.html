@@ -12,28 +12,35 @@
             <div class="col-sm-8 col-sm-offset-2 sentence-detail-container">
                 {% if sentence.is_active is True %}
                     <div class="english-sentence">
-                        {{ sentence.english_sentence|linebreaks }}
+                        <blockquote>
+                            {{ sentence.english_sentence|linebreaks }}
+                        </blockquote>
                     </div>
                     
                     {# TODO: highlight_word #}
 
                     {% if sentence.chinese_translation %}
                         <div class="chinese-sentence">
+                            <b>Chinese translation:</b>
                             {{ sentence.chinese_translation|linebreaks }}
                         </div>
                     {% endif %}
 
                     {% if sentence.original_source %}
                         <div class="original-source">
-                            Original source:
+                            <b>Original source:</b>
                             <br>
-                            <a href="{{ sentence.original_source }}">{{ sentence.original_source }}</a>
+                            <p>
+                                <a href="{{ sentence.original_source }}">
+                                    {{ sentence.original_source }}
+                                </a>
+                            </p>
                         </div>
                     {% endif %}
 
                     {% if sentence.note %}
                         <div class="note">
-                            Note:
+                            <b>Note:</b>
                             <br>
                             {{ sentence.note|linebreaks }}
                         </div>
@@ -49,10 +56,10 @@
                                 {{ sentence.created_time|date:"SHORT_DATE_FORMAT" }}
                             {% endif %}
                         </small>
+                        <br>
                         {% for tag in sentence.tags.all %}
                             {% if tag %}
                                 <small>
-                                    &nbsp;&nbsp;&nbsp;
                                     <a href="{% url 'words_in_sentences:sentence-list' %}?tag={{ tag.name }}">
                                         <span class="glyphicon glyphicon-tag"></span>
                                         {{ tag.name }}
