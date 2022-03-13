@@ -9,7 +9,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 sentence-detail-container">
+            <div class="col-md-8 sentence-detail-container">
                 {% if sentence.is_active is True %}
                     <div class="english-sentence">
                         <blockquote>
@@ -74,6 +74,51 @@
                     The requested resource may have been hidden or deleted.
                 {% endif %}
             </div><!-- End sentence-detail-container -->
+            <div class="col-md-3 col-md-offset-1 sidebar-container">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Review
+                            <small>
+                                · Beat the
+                                <a href="https://en.wikipedia.org/wiki/Forgetting_curve">
+                                    Forgetting Curve
+                                </a>
+                            </small>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        {% if review_list|length < 5 %}
+                            {% for num, review in zip_review_list %}
+                                <p>
+                                    #{{num}}/5 review:
+                                    {{ review.last_review_date|date:"SHORT_DATE_FORMAT" }}
+                                </p>
+                            {% endfor %}
+                            {% if request.user == sentence.author %}
+                                <p><small>Compared with the last review,
+                                    <br>wait at least 1, 2, 3, 8 days.</small></p>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <!-- form.as_p will render them wrapped in <p> tags -->
+                                    {# {{ form }} #}
+                                    <input type="hidden" name="review_times" value="{{ review_list|length|add:1 }}">
+                                    <button type="submit" class="btn btn-success ">
+                                        #{{ review_list|length|add:1 }}/5 Review
+                                    </button>
+                                </form>
+                            {% endif %}
+                        {% else %}
+                            {% for num, review in zip_review_list %}
+                                <p>
+                                    #{{num}}/5 review:
+                                    {{ review.last_review_date|date:"SHORT_DATE_FORMAT" }}
+                                </p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div><!-- End .row -->
     </div><!-- End .container -->
 {% endblock %}

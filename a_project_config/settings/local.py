@@ -16,6 +16,9 @@ $ python manage.py collectstatic --settings=a_project_config.settings.local
 
 Running tests:
 $ python manage.py test --settings=a_project_config.settings.local
+
+Using the shell:
+$ python manage.py shell --settings=a_project_config.settings.local
 """
 
 

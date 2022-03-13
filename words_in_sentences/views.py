@@ -4,7 +4,9 @@ from django.shortcuts import redirect
 from django.views import generic
 from django.db.models import Q
 
-from .models import Sentence, Tag
+from .models import Sentence, Tag, Review
+from .forms import ReviewForm
+
 
 # Django pagination:
 # https://docs.djangoproject.com/en/3.2/topics/pagination/
@@ -39,15 +41,26 @@ class SentenceList(generic.ListView):
 def sentence_detail(request, pk, slug=None):
     # sentence = Sentence.objects.get(pk=pk)
     sentence = get_object_or_404(Sentence, pk=pk)
+    review_list = Review.objects.filter(sentence__pk=pk)
     # stackoverflow.com/questions/31003934
     if slug != sentence.slug:
         # Either slug is wrong or None
         return redirect(sentence.get_absolute_url())
-    return render(
-        request,
-        'words_in_sentences/sentence-detail.html',
-        {'sentence': sentence}
-    )
+    if request.method == 'GET':
+        return render(request, 'words_in_sentences/sentence-detail.html', {
+            'sentence': sentence,
+            'review_list': review_list,
+            'zip_review_list': zip(range(1, 5), review_list),
+        })
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.sentence_id = pk
+            # post.review_times = len(review_list) + 1
+            post.save()
+        return redirect(sentence.get_absolute_url())
 
 
 def search(request):
@@ -62,6 +75,6 @@ def search(request):
     else:
         results = []
     # The context is a dictionary mapping template variable names to Python objects.
-    # https://docs.djangoproject.com/en/3.2/intro/tutorial03//#write-views-that-actually-do-something
+    # docs.djangoproject.com/en/3.2/intro/tutorial03//#write-views-that-actually-do-something
     context = {'results': results, 'query': query}
     return render(request, 'words_in_sentences/search.html', context)
