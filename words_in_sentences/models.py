@@ -88,8 +88,3 @@ class Review(models.Model):
     review_times = models.PositiveSmallIntegerField(default=0)
     modified_time = models.DateTimeField(auto_now=True)
     last_review_date = models.DateField(auto_now=True)
-
-    # docs.djangoproject.com/en/3.2/topics/db/models/#overriding-model-methods
-    def save(self, *args, **kwargs):
-        self.version = self.version + 1
-        super().save(*args, **kwargs)  # Call the "real" save() method.

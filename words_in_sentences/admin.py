@@ -40,7 +40,7 @@ class SentenceAdmin(admin.ModelAdmin):
                 'publish_date',
             )
         }),
-        ('Readonly fields', {
+        ('Sentence Readonly fields', {
             'classes': ('wide', 'extrapretty'),
             'fields': (
                 'created_time',

@@ -5,6 +5,8 @@
 
 .sentence-detail-container {
     line-height: 1.6;
+    /* space to Review (sidebar-container) on Mobile devices */
+    padding-bottom: 30px;
 }
 .sentence-detail-container .english-sentence {
     padding-bottom: 10px;
@@ -37,4 +39,14 @@
 }
 .sentence-detail-container .time-and-tags-widget a:hover {
     text-decoration-color: rgb(156, 211, 146);
+}
+
+.sidebar-container .panel .panel-body {
+    /* background-color: #deecdd; */
+    background-color: rgb(222, 236, 221, 0.9)
+}
+.sidebar-container .panel .panel-body .btn-success {
+    margin-top: 20px;
+    /* background-color: transparent;
+    color: #34A853; */
 }
