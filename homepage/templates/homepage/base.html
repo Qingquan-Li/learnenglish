@@ -66,6 +66,12 @@
                         </li>
                         {% if user.is_authenticated %}
                             <li>
+                                <a href="{% url 'admin:index' %}">
+                                    <span class="glyphicon glyphicon-dashboard"></span>
+                                    &nbsp;Admin
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{% url 'accounts:logout' %}">
                                     <span class="glyphicon glyphicon-log-out"></span>
                                     &nbsp;Welcome {{ user.username }}, Logout

@@ -28,7 +28,7 @@
 
                     {% if sentence.original_source %}
                         <div class="original-source">
-                            <b>Original source:</b>
+                            <b>Source:</b>
                             <br>
                             <p>
                                 <a href="{{ sentence.original_source }}">
@@ -53,7 +53,7 @@
                                 Posted on {{ sentence.created_time|date:"SHORT_DATE_FORMAT" }},
                                 Modified on {{ sentence.modified_time|date:"SHORT_DATE_FORMAT" }}
                             {% else %}
-                                {{ sentence.created_time|date:"SHORT_DATE_FORMAT" }}
+                                Posted on {{ sentence.created_time|date:"SHORT_DATE_FORMAT" }}
                             {% endif %}
                         </small>
                         <br>
@@ -95,7 +95,9 @@
                                     {{ review.last_review_date|date:"SHORT_DATE_FORMAT" }}
                                 </p>
                             {% endfor %}
-                            {% if request.user == sentence.author %}
+                            {% if not user.is_authenticated %}
+                                <a href="{% url 'accounts:login' %}" class="btn btn-success" role="button">Login to Review</a>
+                            {% elif request.user == sentence.author %}
                                 <p><small>Compared with the last review,
                                     <br>wait at least 1, 2, 3, 8 days.</small></p>
                                 <form action="" method="post">
@@ -107,6 +109,10 @@
                                         #{{ review_list|length|add:1 }}/5 Review
                                     </button>
                                 </form>
+                            {% elif request.user != sentence.author %}
+                                <div class="alert alert-success" role="alert">
+                                    You can not Review since you are not the author.
+                                </div>
                             {% endif %}
                         {% else %}
                             {% for num, review in zip_review_list %}
@@ -115,6 +121,9 @@
                                     {{ review.last_review_date|date:"SHORT_DATE_FORMAT" }}
                                 </p>
                             {% endfor %}
+                            <div class="alert alert-success" role="alert">
+                                Review is done.
+                            </div>
                         {% endif %}
                     </div>
                 </div>
