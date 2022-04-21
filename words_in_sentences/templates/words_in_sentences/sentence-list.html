@@ -28,6 +28,21 @@
                         {% if sentence.is_active is True %}
                             <a href="{% url 'words_in_sentences:sentence-detail' pk=sentence.pk %}">
                                 <div class="panel panel-success">
+                                    {% if user.is_authenticated %}
+                                        <div class="panel-heading">
+                                            {% if sentence.review_set.all|length >= 5 %}
+                                                <span class="glyphicon glyphicon-ok-circle"></span>
+                                                Review is Done
+                                            {% elif sentence.review_set.all|length == 0 %}
+                                                Review: None
+                                            {% else %}
+                                                Review:
+                                                {% for value in sentence.review_set.all %}
+                                                    {{ value.last_review_date|date:"m/d" }}
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
                                     <div class="panel-body">
                                         <div class="english-sentence">
                                             {{ sentence.english_sentence|linebreaks }}
