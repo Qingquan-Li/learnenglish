@@ -21,7 +21,7 @@
                                 Posted on {{ article.created_time|date:"SHORT_DATE_FORMAT" }},
                                 Modified on {{ article.modified_time|date:"SHORT_DATE_FORMAT" }}
                             {% else %}
-                                {{ article.created_time|date:"SHORT_DATE_FORMAT" }}
+                                Posted on {{ article.created_time|date:"SHORT_DATE_FORMAT" }}
                             {% endif %}
                         </small>
                         {% for tag in article.tags.all %}

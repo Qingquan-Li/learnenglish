@@ -28,7 +28,7 @@
 
                     {% if sentence.original_source %}
                         <div class="original-source">
-                            <b>Original source:</b>
+                            <b>Source:</b>
                             <br>
                             <p>
                                 <a href="{{ sentence.original_source }}">
@@ -53,7 +53,7 @@
                                 Posted on {{ sentence.created_time|date:"SHORT_DATE_FORMAT" }},
                                 Modified on {{ sentence.modified_time|date:"SHORT_DATE_FORMAT" }}
                             {% else %}
-                                {{ sentence.created_time|date:"SHORT_DATE_FORMAT" }}
+                                Posted on {{ sentence.created_time|date:"SHORT_DATE_FORMAT" }}
                             {% endif %}
                         </small>
                         <br>
