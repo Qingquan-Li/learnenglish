@@ -50,12 +50,12 @@ def sentence_detail(request, pk, slug=None):
         return render(request, 'words_in_sentences/sentence-detail.html', {
             'sentence': sentence,
             'review_list': review_list,
-            'zip_review_list': zip(range(1, 5), review_list),
+            'zip_review_list': zip(range(1, 6), review_list),
         })
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ReviewForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and request.user == sentence.author:
             post = form.save(commit=False)
             post.sentence_id = pk
             # post.review_times = len(review_list) + 1
