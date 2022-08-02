@@ -31,4 +31,5 @@ urlpatterns = [
     path('', include('words_in_sentences.urls')),
     path('accounts/', include('accounts.urls')),
     path('writing/', include('writing.urls')),
+    path('speech/', include('speech.urls')),
 ]

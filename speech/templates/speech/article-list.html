@@ -1,0 +1,164 @@
+{% extends 'homepage/base.html' %}
+
+{% load static %}
+
+{% block css_header %}
+    <link rel="stylesheet" href="{% static 'speech/css/article-list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 main-container">
+                <div class="search-container">
+                    <form method='GET' action="{% url 'speech:speech-article-search' %}">
+                        <div class="input-group input-group-lg">
+                            <input type="text" name="q" class="form-control" placeholder="search articles">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="article-list-container">
+                    {% for article in article_list %}
+                        {% if article.is_active is True %}
+                            <div class="panel panel-success">
+                                <div class="panel-body">
+                                    <div class="title">
+                                        <a href="{% url 'speech:speech-article-detail' pk=article.pk %}">
+                                            <h3>{{ article.title }}</h3>
+                                        </a>
+                                    </div>
+                                    <div class="time-and-tags-widget">
+                                        <small>
+                                            <span class="glyphicon glyphicon-time"></span>
+                                            {{ article.created_time|date:"SHORT_DATE_FORMAT" }}
+                                        </small>
+                                        {% for tag in article.tags.all %}
+                                            {% if tag %}
+                                                <small>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <a href="{% url 'speech:speech-article-list' %}?tag={{ tag.name }}">
+                                                        <span class="glyphicon glyphicon-tag"></span>
+                                                        {{ tag.name }}
+                                                    </a>
+                                                </small>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div><!-- End time-and-tags-widget -->
+                                    <div class="summary">
+                                        {{ article.summary|linebreaks }}
+                                    </div>
+                                    <a class="btn btn-default" href="{% url 'speech:speech-article-detail' pk=article.pk %}" role="button">
+                                        Read more >
+                                    </a>
+                                </div><!-- End panel-body -->
+                            </div><!-- End panel -->
+                        {% endif %}
+                    {% endfor %}
+                </div><!-- End article-list-container -->
+
+                {% if is_paginated %}
+                    <nav>
+                        <ul class="pager">
+                            <!-- First Page -->
+                            {% if page_obj.number != 1 %}
+                                <li>
+                                    <a href="?page=1">
+                                        <span>
+                                            <span class="glyphicon glyphicon-step-backward"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                    <span>
+                                        <span class="glyphicon glyphicon-step-backward"></span>
+                                    </span>
+                                </li>
+                            {% endif %}
+                            <!-- Previous Page -->
+                            {% if page_obj.has_previous %}
+                                <li>
+                                    <a href="?page={{ page_obj.previous_page_number }}">
+                                        <span>Previous</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                    <span>Previous</span>
+                                </li>
+                            {% endif %}
+                            <!-- Current Page Number in Pages Number -->
+                            <li>
+                                <span>{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</span>
+                            </li>
+                            <!-- Next Page -->
+                            {% if page_obj.has_next %}
+                                <li>
+                                    <a href="?page={{ page_obj.next_page_number }}">
+                                        <span>Next</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                    <span>Next</span>
+                                </li>
+                            {% endif %}
+                            <!-- Last Page -->
+                            {% if page_obj.number != page_obj.paginator.num_pages %}
+                                <li>
+                                    <a href="?page={{ page_obj.paginator.num_pages }}">
+                                        <span>
+                                            <span class="glyphicon glyphicon-step-forward"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                    <span>
+                                        <span class="glyphicon glyphicon-step-forward"></span>
+                                    </span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div><!-- End main-container -->
+
+            <div class="col-sm-2 col-sm-offset-1 sidebar-container">
+                <div>
+                    <p class="tags-title">Tags</p>
+                    <ul class="list-unstyled">
+                        {% for tag in tag_list %}
+                            <li>
+                                <a href="{% url 'speech:speech-article-list' %}?tag={{ tag.name }}">
+                                    {{ tag.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% comment %}
+                {# TODO #}
+                    <br>
+                    <br>
+                    <div>
+                        <p style="font-size: 20px;">Archives</p>
+                            <a href="#">February 2022</a><br>
+                            <a href="#">January 2022</a><br>
+                            <a href="#">December 2021</a><br>
+                            <a href="#">November 2021</a><br>
+                            <a href="#">October 2021</a><br>
+                            <a href="#">September 2021</a><br>
+                        </ul>
+                    </div>
+                {% endcomment %}
+            </div><!-- End sidebar-container -->
+
+        </div><!-- End .row -->
+    </div><!-- End .container -->
+{% endblock %}

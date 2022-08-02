@@ -1,0 +1,15 @@
+.row {
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+
+.article-list-container a {
+    color: #333333;
+    /* text-decoration: none; */
+}
+.article-list-container a:hover {
+    text-decoration-color: rgb(156, 211, 146);
+}
+.article-list-container .match-rank {
+    color: #4D4D4D;
+}
