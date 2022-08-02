@@ -31,7 +31,7 @@ class ArticleModelTest(TestCase):
     def test_title_content(self) -> None:
         expected_object_name = f'{self.article.title}'
         self.assertEqual(expected_object_name, 'The First Article')
-    
+
     def test_slug_content(self) -> None:
         expected_object_name = f'{self.article.slug}'
         self.assertEqual(expected_object_name, 'the-first-article')
