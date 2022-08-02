@@ -1,0 +1,51 @@
+{% extends 'homepage/base.html' %}
+
+{% load static %}
+
+{% block css_header %}
+    <link rel="stylesheet" href="{% static 'speech/css/article-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 article-detail-container">
+                {% if article.is_active is True %}
+                    <div class="title">
+                        <h1>{{ article.title }}</h1>
+                    </div>
+                    <div class="time-and-tags-widget">
+                        <small>
+                            <span class="glyphicon glyphicon-time"></span>
+                            {% if article.version > 1 %}
+                                Posted on {{ article.created_time|date:"SHORT_DATE_FORMAT" }},
+                                Modified on {{ article.modified_time|date:"SHORT_DATE_FORMAT" }}
+                            {% else %}
+                                Posted on {{ article.created_time|date:"SHORT_DATE_FORMAT" }}
+                            {% endif %}
+                        </small>
+                        {% for tag in article.tags.all %}
+                            {% if tag %}
+                                <small>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a href="{% url 'speech:speech-article-list' %}?tag={{ tag.name }}">
+                                        <span class="glyphicon glyphicon-tag"></span>
+                                        {{ tag.name }}
+                                    </a>
+                                </small>
+                            {% endif %}
+                        {% endfor %}
+                    </div><!-- .time-and-tags-widget -->
+                    <br>
+                    <div class="body">
+                        {{ article.body|safe }}
+                    </div>
+                {% else %}
+                    <h1>Not Found</h1>
+                    <br>
+                    The requested resource may have been hidden or deleted.
+                {% endif %}
+            </div><!-- End article-detail-container -->
+        </div><!-- End .row -->
+    </div><!-- End .container -->
+{% endblock %}

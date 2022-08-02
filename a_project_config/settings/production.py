@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'words_in_sentences.apps.WordsInSentencesConfig',
     'homepage.apps.HomepageConfig',
     'writing.apps.WritingConfig',
+    'speech.apps.SpeechConfig',
 ]
 
 MIDDLEWARE = [

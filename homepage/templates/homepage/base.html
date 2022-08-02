@@ -64,6 +64,13 @@
                         >
                             <a href="{% url 'writing:article-list' %}">Writing</a>
                         </li>
+                        <li
+                            {% if request.resolver_match.url_name == 'speech-article-list' or request.resolver_match.url_name == 'speech-article-detail-with-slug' or request.resolver_match.url_name == 'speech-article-search' %}
+                                class="active"
+                            {% endif %}
+                        >
+                            <a href="{% url 'speech:speech-article-list' %}">Speech</a>
+                        </li>
                         {% if user.is_authenticated %}
                             <li>
                                 <a href="{% url 'admin:index' %}">

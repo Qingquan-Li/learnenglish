@@ -2,6 +2,9 @@
 Runserver:
 $ python manage.py runserver 0:8000 --settings=a_project_config.settings.local
 
+Creating an app:
+python manage.py startapp [app_name] --settings=a_project_config.settings.local
+
 Creating an admin user:
 $ python manage.py createsuperuser --settings=a_project_config.settings.local
 

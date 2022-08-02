@@ -1,0 +1,52 @@
+{% extends 'homepage/base.html' %}
+
+{% load static %}
+
+{% block css_header %}
+    <link rel="stylesheet" href="{% static 'speech/css/search.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 search-container">
+                <form method='GET'>
+                    <div class="input-group input-group-lg">
+                        <input type="text" name="q" class="form-control" placeholder="search articles">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <br>
+                {% if query %}
+                    {% if results %}
+                        <small>{{ results|length }} results for <i>{{ query }}</i></small>
+                        <br>
+                        <br>
+                        <div class="article-list-container">
+                            {% for item in results %}
+                                {% if item.is_active is True %}
+                                    <div class="title">
+                                        <a href="{% url 'speech:speech-article-detail' pk=item.pk %}">
+                                            <h2>{{ item.title }}</h2>
+                                        </a>
+                                    </div>
+                                    <div class="headline-and-rank">
+                                        {{ item.headline|safe }}
+                                        <br>
+                                        <small><i><span class="match-rank">Match rank: {{ item.rank }}</span></i></small>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div><!-- End article-list-container -->
+                    {% else %}
+                        <h5>0 result for <i>{{ query }}</h5>
+                    {% endif %}
+                {% endif %}
+            </div><!-- End col-sm-8 -->
+        </div><!-- End row -->
+    </div><!-- End container -->
+{% endblock %}
