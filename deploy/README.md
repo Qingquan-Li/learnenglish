@@ -58,6 +58,8 @@ $ git commit -m "descriptive message"
 $ git push
 ```
 
+Create pull request and merge code if needed.
+
 ## 7. Transferring environment variables (`.env`) to server
 > References:
 > https://saurabh-kumar.com/python-dotenv/
@@ -92,7 +94,7 @@ $ git pull # or: git fetch + git merge
 
 ## 3. Installing package dependencies
 
-If you hava added new package dependencies,
+If you hava added/upgraded new package dependencies,
 you should run the command to intall them:
 
 ```bash
